@@ -20,6 +20,8 @@ which is shorthand for:
 </host-element>
 ```
 
+Same thing is done for button element, which supports value attribute.
+
 ## Example 2
 
 ```html
