@@ -22,7 +22,7 @@ which is shorthand for:
 
 Same thing is done for button element, which supports value attribute.
 
-## Example 2
+## Example 2 [TODO]
 
 ```html
 <host-element>
