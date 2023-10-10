@@ -16,7 +16,7 @@ which is shorthand for:
 ```html
 <host-element>
     #shadow
-        <input be-elevating='of value to host prop on change event.'>
+        <input be-elevating='of value to / host prop on change event.'>
 </host-element>
 ```
 
