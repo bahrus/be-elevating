@@ -16,8 +16,16 @@ which is shorthand for:
 ```html
 <host-element>
     #shadow
-        <input be-elevating='of value to host prop.'>
+        <input be-elevating='of value to host prop on change event.'>
 </host-element>
 ```
 
-What these two first examples do:  Pass the value of the input element to the hostProp property of the hot element on the change event.
+## Example 2
+
+```html
+<host-element>
+    #shadow
+        <peer-element -my-prop></peer-element>
+        <input be-elevating='to -my-prop.'>
+</host-element>
+```
