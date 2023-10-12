@@ -1,5 +1,7 @@
 # be-elevating [TODO]
 
+Elevate local property value to host or upstream peer element when user initiates event.
+
 ## Example 1a [TODO]
 
 ```html
@@ -8,6 +10,10 @@
         <input be-elevating='to host prop.'>
 </host-element>
 ```
+
+What this does:
+
+It passes the value of the input element to the host element's hostProp property anytime (and only when) the input element's "input" event fires.
 
 which is shorthand for:
 

@@ -1,11 +1,38 @@
 {
   "name": "be-elevating",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Elevate local property value to host or upstream peer element when user initiates event.",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "custom-element",
+    "custom-elements"
+  ],
+  "main": "be-elevating.js",
+  "module": "be-elevating.js",
+  "exports": {
+    ".": "./be-invoking.js",
+    "./be-invoking.js": "./be-invoking.js"
   },
-  "author": "",
+  "types": "types.d.ts",
+  "scripts": {
+    "serve": "node node_modules/may-it-serve",
+    "test": "playwright test",
+    "safari": "npx playwright wk http://localhost:3030",
+    "update": "ncu -u && npm install"
+  },
+  "dependencies": {
+    "be-enhanced": "0.0.55",
+    "be-hive": "0.0.123",
+    "be-linked": "0.0.53",
+    "be-propagating": "0.0.28",
+    "trans-render": "0.0.706",
+    "xtal-element": "0.0.579"
+  },
+  "devDependencies": {
+    "may-it-serve": "0.0.6",
+    "@playwright/test": "1.39.0"
+  },
+  "author": "Bruce B. Anderson <anderson.bruce.b@gmail.com>",
   "license": "MIT"
 }
