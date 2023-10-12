@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"sourceMap": false,
+		"experimentalDecorators": false,
+		"newLine": "LF",
+		"strict": true,
+	},
+	"files": [
+		"be-elevating.ts",
+		//"MyCustomElement/MyCustomElement.ts"
+	],
+	"exclude":[
+		"node_modules"
+	]
+
+}

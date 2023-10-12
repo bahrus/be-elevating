@@ -7,7 +7,7 @@ Elevate local property value to host or upstream peer element when user initiate
 ```html
 <host-element>
     #shadow
-        <input be-elevating='to host prop.'>
+        <input disabled be-elevating='to host prop.'>
 </host-element>
 ```
 

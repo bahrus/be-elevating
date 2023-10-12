@@ -8,6 +8,25 @@ export interface EndUserProps extends IBE{
     To?: Array<ToStatement>,
 }
 
+export interface AllProps extends EndUserProps{
+    isParsed?: boolean,
+    elevateRules?: Array<ElevateRule>,
+}
+
+export type AP = AllProps;
+
+export type PAP = Partial<AP>;
+
+export type ProPAP = Promise<PAP>;
+
+export type POA = [PAP | undefined, ActionOnEventConfigs<PAP, Actions>];
+
+export interface Actions{
+    onCamelized(self: this): ProPAP;
+    hydrate(self: this): ProPAP;
+}
+
+
 export type OfStatement = string;
 export type ToStatement = string;
 
