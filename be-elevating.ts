@@ -113,11 +113,12 @@ const xe = new XE<AP, Actions>({
         actions:{
             onCamelized: {
                 ifAllOf: ['isParsed'],
-                ifAtLeastOneOf: ['of', 'Of']
+                ifAtLeastOneOf: ['of', 'Of', 'to', 'To']
             },
             hydrate: 'elevateRules'
         }
-    }
+    },
+    superclass: BeElevating
 });
 
 register(ifWantsToBe, upgrade, tagName);

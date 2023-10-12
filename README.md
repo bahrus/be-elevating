@@ -34,6 +34,7 @@ Same thing is done for button element, which supports value attribute.
 <host-element>
     #shadow
         <peer-element -my-prop></peer-element>
+        ...
         <input be-elevating='to -my-prop.'>
 </host-element>
 ```

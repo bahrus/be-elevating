@@ -9,7 +9,7 @@
 	},
 	"files": [
 		"be-elevating.ts",
-		//"MyCustomElement/MyCustomElement.ts"
+		"MyCustomElement/MyCustomElement.ts"
 	],
 	"exclude":[
 		"node_modules"
