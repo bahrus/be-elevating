@@ -35,12 +35,52 @@ export class BeElevating extends BE {
     }
     async hydrate(self) {
         const { enhancedElement, elevateRules } = self;
+        for (const rule of elevateRules) {
+            const { localEvent } = rule;
+            let signalInfo;
+            if (localEvent) {
+                signalInfo = {
+                    eventTarget: enhancedElement,
+                    type: localEvent,
+                };
+            }
+            else {
+                signalInfo = getDefaultSignalInfo(enhancedElement);
+            }
+            const { eventTarget, type } = signalInfo;
+            eventTarget.addEventListener(type, async (e) => {
+                let { remoteRef, remoteProp } = rule;
+                let ref = remoteRef?.deref();
+                if (ref === undefined) {
+                    const { remoteType } = rule;
+                    const { getRemoteEl } = await import('be-linked/getRemoteEl.js');
+                    ref = await getRemoteEl(enhancedElement, remoteType, remoteProp);
+                    rule.remoteRef = new WeakRef(ref);
+                }
+                const { lispToCamel } = await import('trans-render/lib/lispToCamel.js');
+                const newRemotePropName = lispToCamel(remoteProp);
+                const { getSignalVal } = await import('be-linked/getSignalVal.js');
+                ref[newRemotePropName] = getSignalVal(enhancedElement);
+            });
+        }
         nudge(enhancedElement);
         return {
             resolved: true,
         };
     }
 }
+function getDefaultSignalInfo(enhancedElement) {
+    const { localName } = enhancedElement;
+    switch (localName) {
+        case 'input':
+            return {
+                eventTarget: enhancedElement,
+                type: 'input'
+            };
+    }
+    throw 'NI';
+}
+export const strType = String.raw `\/|\-`;
 const tagName = 'be-elevating';
 const ifWantsToBe = 'elevating';
 const upgrade = '*';
