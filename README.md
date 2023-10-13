@@ -50,12 +50,12 @@ which is shorthand for: [TODO]
 
 Same thing is done for button element, which supports value attribute.
 
-## Example 2a [TODO]
+## Example 2a
 
 ```html
 <host-element>
     #shadow
-        <peer-element -my-string-prop></peer-element>
+        <my-peer-element -my-string-prop></my-peer-element>
         ...
         <input be-elevating='to -my-string-prop.'>
 </host-element>
@@ -64,7 +64,7 @@ Same thing is done for button element, which supports value attribute.
 This sets:
 
 ```JavaScript
-oPeerElement.myStringProp = oInput.value
+oMyPeerElement.myStringProp = oInput.value
 ```
 
 whenever the input element emits event "input".
