@@ -15,12 +15,24 @@ What this does:
 
 It passes the value of the input element to the host element's hostProp property anytime (and only when) the input element's "input" event fires.
 
-which is shorthand for:
+which is shorthand for: [TODO]
 
 ```html
 <host-element>
     #shadow
         <input be-elevating='of value to / host prop on input event.'>
+</host-element>
+```
+
+## Example 1b
+
+```html
+<host-element>
+    #shadow
+        <input 
+            data-test='this text should appear on input.' disabled 
+            be-elevating='of dataset:test to some string prop.'
+        >
 </host-element>
 ```
 

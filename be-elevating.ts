@@ -54,7 +54,7 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
             }
             const {eventTarget, type} = signalInfo;
             eventTarget.addEventListener(type, async e => {
-                let {remoteRef, remoteProp} = rule;
+                let {remoteRef, remoteProp, localProp} = rule;
                 let ref = remoteRef?.deref();
                 if(ref === undefined){
                     const {remoteType} = rule;
@@ -63,9 +63,20 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
                     rule.remoteRef = new WeakRef(ref);
                 }
                 const {lispToCamel} = await import('trans-render/lib/lispToCamel.js');
+                let val: any;
+                if(localProp === undefined){
+                    const {getSignalVal} = await import('be-linked/getSignalVal.js');
+                    val = getSignalVal(enhancedElement);
+                }else{
+                    if(localProp[0] === '.'){
+                        const {getVal} = await import('trans-render/lib/getVal.js');
+                        val = await getVal({host: enhancedElement}, localProp);
+                    }else{
+                        val = (<any>enhancedElement)[localProp];
+                    }
+                }
                 const newRemotePropName = lispToCamel(remoteProp);
-                const {getSignalVal} = await import('be-linked/getSignalVal.js');
-                (<any>ref)[newRemotePropName] = getSignalVal(enhancedElement);
+                (<any>ref)[newRemotePropName] = val;
             });
         }
         nudge(enhancedElement);

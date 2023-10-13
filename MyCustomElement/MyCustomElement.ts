@@ -12,6 +12,16 @@ export class MyCustomElement extends HTMLElement{
         if(div !== null && div !== undefined) div.textContent = strVal;
     }
 
+    #someStringProp: string = '';
+    get someStringProp(){
+        return this.#someStringProp;
+    }
+    set someStringProp(nv){
+        this.#someStringProp = nv;
+        const div = this.shadowRoot?.querySelector('#someStringPropVal');
+        if(div !== null && div !== undefined) div.textContent = nv;
+    }
+
     constructor(){
         super()
         this.attachShadow({mode: 'open'});
@@ -21,9 +31,12 @@ export class MyCustomElement extends HTMLElement{
         this.shadowRoot!.innerHTML = String.raw `
         <div itemscope>
             <div  id=someNumPropVal></div>
+            <div  id=someStringPropVal></div>
             <h3>Example 1a</h3>
             <input type=number disabled be-elevating='to some num prop.'>
-            
+            <h3>Example 1b</h3>
+            <input data-test='this text should appear on input.' disabled 
+                    be-elevating='of dataset:test to some string prop.'>
         </div>
         <be-hive></be-hive>
         `;
