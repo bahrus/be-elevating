@@ -34,6 +34,7 @@ export type ElTypes = '/' | '-';
 
 export interface ElevateRule{
     localEvent?: string,
+    localProp?: string,
     remoteProp: string,
     remoteType: ElTypes,
     remoteRef?: WeakRef<Element>,
