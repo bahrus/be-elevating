@@ -20,7 +20,7 @@ which is shorthand for: [TODO]
 ```html
 <host-element>
     #shadow
-        <input be-elevating='of value to / host prop on input event.'>
+        <input be-elevating='of value to / host prop on input.'>
 </host-element>
 ```
 
@@ -32,6 +32,18 @@ which is shorthand for: [TODO]
         <input 
             data-test='this text should appear on input.' disabled 
             be-elevating='of dataset:test to some string prop.'
+        >
+</host-element>
+```
+
+## Example 1c
+
+```html
+<host-element>
+    #shadow
+        <input 
+            data-test='this text should appear on input.' disabled 
+            be-elevating='of dataset:test to some string prop on change.'
         >
 </host-element>
 ```

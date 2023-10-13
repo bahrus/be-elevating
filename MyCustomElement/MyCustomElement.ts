@@ -37,6 +37,9 @@ export class MyCustomElement extends HTMLElement{
             <h3>Example 1b</h3>
             <input data-test='this text should appear on input.' disabled 
                     be-elevating='of dataset:test to some string prop.'>
+            <h3>Example 1c</h3>
+            <input data-test='this text should appear on input.' disabled 
+                    be-elevating='of dataset:test to some string prop on change.'>
         </div>
         <be-hive></be-hive>
         `;
