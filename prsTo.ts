@@ -8,20 +8,28 @@ const remoteProp = String.raw `(?<remoteProp>[\w\-]+)`;
 
 const remoteType = String.raw `(?<remoteType>${strType})`;
 
-const localEvent = String.raw `(?<!\\)On(?<localEvent>[\w]+)`;
+const onLocalEvent = String.raw `(?<!\\)On(?<localEvent>[\w]+)`;
 
 const reToElevatingStatement: Array<RegExpOrRegExpExt<Partial<ElevateRule>>> = [
     {
-        regExp: new RegExp(String.raw `^${remoteType}${remoteProp}`), 
+        regExp: new RegExp(String.raw `^${remoteType}${remoteProp}${onLocalEvent}`), 
+        defaultVals: {}
+    },
+    {
+        regExp: new RegExp(String.raw `^${remoteProp}${onLocalEvent}`), 
         defaultVals: {
+            remoteType: '/',
         }
+    },
+    {
+        regExp: new RegExp(String.raw `^${remoteType}${remoteProp}`), 
+        defaultVals: {}
     },
     {
         regExp: new RegExp(String.raw `^${remoteProp}`), 
         defaultVals: {
             remoteType: '/',
         }
-        
     }
 ];
 

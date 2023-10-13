@@ -2,8 +2,18 @@ import { tryParse } from 'be-enhanced/cpu.js';
 import { strType } from './be-elevating.js';
 const remoteProp = String.raw `(?<remoteProp>[\w\-]+)`;
 const remoteType = String.raw `(?<remoteType>${strType})`;
-const localEvent = String.raw `(?<!\\)On(?<localEvent>[\w]+)`;
+const onLocalEvent = String.raw `(?<!\\)On(?<localEvent>[\w]+)`;
 const reToElevatingStatement = [
+    {
+        regExp: new RegExp(String.raw `^${remoteType}${remoteProp}${onLocalEvent}`),
+        defaultVals: {}
+    },
+    {
+        regExp: new RegExp(String.raw `^${remoteProp}${onLocalEvent}`),
+        defaultVals: {
+            remoteType: '/',
+        }
+    },
     {
         regExp: new RegExp(String.raw `^${remoteType}${remoteProp}`),
         defaultVals: {}

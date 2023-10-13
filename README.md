@@ -15,7 +15,7 @@ What this does:
 
 It passes the value of the input element to the host element's hostProp property any time (and only when) the input element's "input" event fires.
 
-which is shorthand for: [TODO]
+which is shorthand for: [Untested]
 
 ```html
 <host-element>
@@ -68,3 +68,14 @@ oMyPeerElement.myStringProp = oInput.value
 ```
 
 whenever the input element emits event "input".
+
+## Example 2b
+
+```html
+<host-element>
+    #shadow
+        <my-peer-element -my-string-prop></my-peer-element>
+        ...
+        <input be-elevating='to -my-string-prop on change.'>
+</host-element>
+```

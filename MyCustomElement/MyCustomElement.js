@@ -43,6 +43,10 @@ export class MyCustomElement extends HTMLElement {
             <my-peer-element -my-string-prop></my-peer-element>
             ...
             <input be-elevating='to -my-string-prop.'>
+            <h3>Example 2b</h3>
+            <my-peer-element -my-string-prop></my-peer-element>
+            ...
+            <input be-elevating='to -my-string-prop on change.'>
         </div>
         <be-hive></be-hive>
         `;
