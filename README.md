@@ -13,14 +13,14 @@ Elevate local property value to host or upstream peer element when user initiate
 
 What this does:
 
-It passes the value of the input element to the host element's hostProp property anytime (and only when) the input element's "input" event fires.
+It passes the value of the input element to the host element's hostProp property any time (and only when) the input element's "input" event fires.
 
 which is shorthand for: [TODO]
 
 ```html
 <host-element>
     #shadow
-        <input be-elevating='of value to / host prop on input.'>
+        <input be-elevating='of value to host prop on input.'>
 </host-element>
 ```
 
@@ -50,13 +50,21 @@ which is shorthand for: [TODO]
 
 Same thing is done for button element, which supports value attribute.
 
-## Example 2 [TODO]
+## Example 2a [TODO]
 
 ```html
 <host-element>
     #shadow
-        <peer-element -my-prop></peer-element>
+        <peer-element -my-string-prop></peer-element>
         ...
-        <input be-elevating='to -my-prop.'>
+        <input be-elevating='to -my-string-prop.'>
 </host-element>
 ```
+
+This sets:
+
+```JavaScript
+oPeerElement.myStringProp = oInput.value
+```
+
+whenever the input element emits event "input".

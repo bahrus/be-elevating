@@ -1,4 +1,4 @@
-//import '../MyPeerElement/MyPeerElement.js';
+import '../MyPeerElement/MyPeerElement.js';
 export class MyCustomElement extends HTMLElement {
     #someNumProp = 23;
     get someNumProp() {
@@ -39,6 +39,10 @@ export class MyCustomElement extends HTMLElement {
             <h3>Example 1c</h3>
             <input data-test='this text should appear on input.' disabled 
                     be-elevating='of dataset:test to some string prop on change.'>
+            <h3>Example 2a</h3>
+            <peer-element -my-string-prop></peer-element>
+            ...
+            <input be-elevating='to -my-prop.'>
         </div>
         <be-hive></be-hive>
         `;
