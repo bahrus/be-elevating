@@ -1,4 +1,4 @@
-# be-elevating
+# be-elevating [WIP]
 
 Elevate local property value to host or upstream peer element when user initiates event.
 
@@ -7,7 +7,7 @@ Elevate local property value to host or upstream peer element when user initiate
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-elevating?compression=gzip">
 [![Playwright Tests](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml)
 
-## Example 1a
+## Example 1a [TODO]
 
 ```html
 <my-custom-element>
