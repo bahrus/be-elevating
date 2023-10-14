@@ -7,8 +7,22 @@ Elevate local property value to host or upstream peer element when user initiate
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-elevating?compression=gzip">
 [![Playwright Tests](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml)
 
+## Example 1a
 
-## Example 1a 
+```html
+<my-custom-element>
+    #shadow
+        <input disabed name=hostProp be-elevating>
+</my-custom-element>
+```
+
+What this does:
+
+It passes the value of the input element to the host element's hostProp property any time (and only when) the input element's "input" event fires.
+
+This is shorthand for:
+
+## Example 1b 
 
 ```html
 <host-element>
@@ -17,9 +31,7 @@ Elevate local property value to host or upstream peer element when user initiate
 </host-element>
 ```
 
-What this does:
 
-It passes the value of the input element to the host element's hostProp property any time (and only when) the input element's "input" event fires.
 
 which is shorthand for: [Untested]
 
@@ -30,7 +42,7 @@ which is shorthand for: [Untested]
 </host-element>
 ```
 
-## Example 1b
+## Example 1e
 
 ```html
 <host-element>
@@ -42,7 +54,7 @@ which is shorthand for: [Untested]
 </host-element>
 ```
 
-## Example 1c
+## Example 1f
 
 ```html
 <host-element>
