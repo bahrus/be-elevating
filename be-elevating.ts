@@ -21,6 +21,18 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
         } as BEConfig;
     }
 
+    async noAttrs(self: this){
+        const {enhancedElement} = self;
+        const elevateRule: ElevateRule = {
+            remoteType: '/',
+            //TODO:  move this evaluation to be-linked -- shared with be-bound
+            remoteProp: enhancedElement.getAttribute('itemprop') || (enhancedElement as any).name || enhancedElement.id,
+        };
+        return {
+          elevateRules: [elevateRule]  
+        } 
+    }
+
     async onCamelized(self: this): ProPAP {
         const {of, Of, To, to} = self;
         let ofRules: Array<ElevateRule> = [];
@@ -122,6 +134,10 @@ const xe = new XE<AP, Actions>({
             ...propInfo
         },
         actions:{
+            noAttrs: {
+                ifAllOf: ['isParsed'],
+                ifNoneOf: ['of', 'Of', 'to', 'To']
+            },
             onCamelized: {
                 ifAllOf: ['isParsed'],
                 ifAtLeastOneOf: ['of', 'Of', 'to', 'To']

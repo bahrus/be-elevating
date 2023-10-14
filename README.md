@@ -1,4 +1,4 @@
-# be-elevating [WIP]
+# be-elevating
 
 Elevate local property value to host or upstream peer element when user initiates event.
 
@@ -7,12 +7,12 @@ Elevate local property value to host or upstream peer element when user initiate
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-elevating?compression=gzip">
 [![Playwright Tests](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml)
 
-## Example 1a [TODO]
+## Example 1a
 
 ```html
 <my-custom-element>
     #shadow
-        <input disabed name=hostProp be-elevating>
+        <input disabled name=hostProp be-elevating>
 </my-custom-element>
 ```
 
@@ -31,8 +31,6 @@ This is shorthand for:
 </host-element>
 ```
 
-
-
 which is shorthand for: [Untested]
 
 ```html
@@ -42,7 +40,7 @@ which is shorthand for: [Untested]
 </host-element>
 ```
 
-## Example 1e
+## Example 1c
 
 ```html
 <host-element>
@@ -54,7 +52,7 @@ which is shorthand for: [Untested]
 </host-element>
 ```
 
-## Example 1f
+## Example 1d
 
 ```html
 <host-element>
