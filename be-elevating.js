@@ -3,6 +3,7 @@ import { XE } from 'xtal-element/XE.js';
 import { register } from 'be-hive/register.js';
 import { nudge } from 'trans-render/lib/nudge.js';
 export class BeElevating extends BE {
+    //TODO use abort controllers, and move off of deprecated getDefaultSignalInfo
     #abortControllers = [];
     detach(detachedElement) {
         for (const ac of this.#abortControllers) {
@@ -18,11 +19,13 @@ export class BeElevating extends BE {
     }
     async noAttrs(self) {
         const { enhancedElement } = self;
-        const elevateRule = {
-            remoteType: '/',
-            //TODO:  move this evaluation to be-linked -- shared with be-bound
-            remoteProp: enhancedElement.getAttribute('itemprop') || enhancedElement.name || enhancedElement.id,
-        };
+        const { getDefaultRemoteRule } = await import('be-linked/getDefaultSignalInfo.js');
+        const elevateRule = getDefaultRemoteRule(enhancedElement);
+        // const elevateRule: ElevateRule = {
+        //     remoteType: '/',
+        //     //TODO:  move this evaluation to be-linked -- shared with be-bound
+        //     remoteProp: enhancedElement.getAttribute('itemprop') || (enhancedElement as any).name || enhancedElement.id,
+        // };
         return {
             elevateRules: [elevateRule]
         };
@@ -59,6 +62,8 @@ export class BeElevating extends BE {
                 signalInfo = getDefaultSignalInfo(enhancedElement);
             }
             const { eventTarget, type } = signalInfo;
+            const ab = new AbortController();
+            this.#abortControllers.push(ab);
             eventTarget.addEventListener(type, async (e) => {
                 let { remoteRef, remoteProp, localProp } = rule;
                 let ref = remoteRef?.deref();
@@ -85,7 +90,7 @@ export class BeElevating extends BE {
                 }
                 const newRemotePropName = lispToCamel(remoteProp);
                 ref[newRemotePropName] = val;
-            });
+            }, { signal: ab.signal });
         }
         nudge(enhancedElement);
         return {

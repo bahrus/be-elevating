@@ -7,6 +7,7 @@ import {nudge} from 'trans-render/lib/nudge.js';
 import {ElTypes} from 'be-linked/types';
 
 export class BeElevating  extends BE<AP, Actions> implements Actions{
+    //TODO use abort controllers, and move off of deprecated getDefaultSignalInfo
     #abortControllers: Array<AbortController>  = [];
     detach(detachedElement: Element): void {
         for(const ac of this.#abortControllers){
@@ -23,11 +24,13 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
 
     async noAttrs(self: this){
         const {enhancedElement} = self;
-        const elevateRule: ElevateRule = {
-            remoteType: '/',
-            //TODO:  move this evaluation to be-linked -- shared with be-bound
-            remoteProp: enhancedElement.getAttribute('itemprop') || (enhancedElement as any).name || enhancedElement.id,
-        };
+        const {getDefaultRemoteRule} = await import('be-linked/getDefaultSignalInfo.js');
+        const elevateRule = getDefaultRemoteRule(enhancedElement);
+        // const elevateRule: ElevateRule = {
+        //     remoteType: '/',
+        //     //TODO:  move this evaluation to be-linked -- shared with be-bound
+        //     remoteProp: enhancedElement.getAttribute('itemprop') || (enhancedElement as any).name || enhancedElement.id,
+        // };
         return {
           elevateRules: [elevateRule]  
         } 
@@ -65,6 +68,8 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
                 signalInfo = getDefaultSignalInfo(enhancedElement);
             }
             const {eventTarget, type} = signalInfo;
+            const ab = new AbortController();
+            this.#abortControllers.push(ab);
             eventTarget.addEventListener(type, async e => {
                 let {remoteRef, remoteProp, localProp} = rule;
                 let ref = remoteRef?.deref();
@@ -89,7 +94,7 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
                 }
                 const newRemotePropName = lispToCamel(remoteProp);
                 (<any>ref)[newRemotePropName] = val;
-            });
+            }, {signal: ab.signal});
         }
         nudge(enhancedElement);
         return {

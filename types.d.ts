@@ -1,5 +1,6 @@
 import { ActionOnEventConfigs } from "trans-render/froop/types";
 import {IBE} from 'be-enhanced/types';
+import {RemoteRule} from 'be-linked/types';
 
 export interface EndUserProps extends IBE{
     of?: Array<OfStatement>,
@@ -33,10 +34,10 @@ export type ToStatement = string;
 
 export type ElTypes = '/' | '-';
 
-export interface ElevateRule{
+export interface ElevateRule extends RemoteRule{
     localEvent?: string,
     localProp?: string,
-    remoteProp: string,
-    remoteType: ElTypes,
-    remoteRef?: WeakRef<Element>,
+    // remoteProp: string,
+    // remoteType: ElTypes,
+    // remoteRef?: WeakRef<Element>,
 }
