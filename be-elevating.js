@@ -2,10 +2,10 @@ import { BE, propDefaults, propInfo } from 'be-enhanced/BE.js';
 import { XE } from 'xtal-element/XE.js';
 import { register } from 'be-hive/register.js';
 import { nudge } from 'trans-render/lib/nudge.js';
+import { getRemoteProp, getLocalSignal } from 'be-linked/defaults.js';
 export class BeElevating extends BE {
-    //TODO use abort controllers, and move off of deprecated getDefaultSignalInfo
     #abortControllers = [];
-    detach(detachedElement) {
+    detach() {
         for (const ac of this.#abortControllers) {
             ac.abort();
         }
@@ -19,18 +19,11 @@ export class BeElevating extends BE {
     }
     async noAttrs(self) {
         const { enhancedElement } = self;
-        //const {getDefaultRemoteRule} = await import('be-linked/getDefaultSignalInfo.js');
-        //const elevateRule = getDefaultRemoteRule(enhancedElement);
-        const { getRemoteProp } = await import('be-linked/defaults.js');
+        //const {getRemoteProp} = await import('be-linked/defaults.js');
         const elevateRule = {
             remoteProp: getRemoteProp(enhancedElement),
             remoteType: '/'
         };
-        // const elevateRule: ElevateRule = {
-        //     remoteType: '/',
-        //     //TODO:  move this evaluation to be-linked -- shared with be-bound
-        //     remoteProp: enhancedElement.getAttribute('itemprop') || (enhancedElement as any).name || enhancedElement.id,
-        // };
         return {
             elevateRules: [elevateRule]
         };
@@ -59,17 +52,17 @@ export class BeElevating extends BE {
             let signalInfo;
             if (localEvent) {
                 signalInfo = {
-                    eventTarget: enhancedElement,
+                    signal: enhancedElement,
                     type: localEvent,
                 };
             }
             else {
-                signalInfo = getDefaultSignalInfo(enhancedElement);
+                signalInfo = await getLocalSignal(enhancedElement);
             }
-            const { eventTarget, type } = signalInfo;
+            const { signal, type } = signalInfo;
             const ab = new AbortController();
             this.#abortControllers.push(ab);
-            eventTarget.addEventListener(type, async (e) => {
+            signal.addEventListener(type, async (e) => {
                 let { remoteRef, remoteProp, localProp } = rule;
                 let ref = remoteRef?.deref();
                 if (ref === undefined) {
@@ -103,17 +96,22 @@ export class BeElevating extends BE {
         };
     }
 }
-function getDefaultSignalInfo(enhancedElement) {
-    const { localName } = enhancedElement;
-    switch (localName) {
-        case 'input':
-            return {
-                eventTarget: enhancedElement,
-                type: 'input'
-            };
-    }
-    throw 'NI';
-}
+// //TODO:  move to be-linked
+// interface SignalInfo{
+//     eventTarget: EventTarget,
+//     type: string,
+// }
+// function getDefaultSignalInfo(enhancedElement: Element): SignalInfo{
+//     const {localName} = enhancedElement;
+//     switch(localName){
+//         case 'input':
+//             return {
+//                 eventTarget: enhancedElement,
+//                 type: 'input'
+//             }
+//     }
+//     throw 'NI';
+// }
 export const strType = String.raw `\/|\-`;
 const tagName = 'be-elevating';
 const ifWantsToBe = 'elevating';
