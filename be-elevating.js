@@ -19,7 +19,6 @@ export class BeElevating extends BE {
     }
     async noAttrs(self) {
         const { enhancedElement } = self;
-        //const {getRemoteProp} = await import('be-linked/defaults.js');
         const elevateRule = {
             remoteProp: getRemoteProp(enhancedElement),
             remoteType: '/'
@@ -96,22 +95,6 @@ export class BeElevating extends BE {
         };
     }
 }
-// //TODO:  move to be-linked
-// interface SignalInfo{
-//     eventTarget: EventTarget,
-//     type: string,
-// }
-// function getDefaultSignalInfo(enhancedElement: Element): SignalInfo{
-//     const {localName} = enhancedElement;
-//     switch(localName){
-//         case 'input':
-//             return {
-//                 eventTarget: enhancedElement,
-//                 type: 'input'
-//             }
-//     }
-//     throw 'NI';
-// }
 export const strType = String.raw `\/|\-`;
 const tagName = 'be-elevating';
 const ifWantsToBe = 'elevating';

@@ -24,7 +24,6 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
 
     async noAttrs(self: this){
         const {enhancedElement} = self;
-        //const {getRemoteProp} = await import('be-linked/defaults.js');
         const elevateRule: ElevateRule = {
             remoteProp: getRemoteProp(enhancedElement),
             remoteType: '/'
@@ -101,22 +100,6 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
     }
 }
 
-// //TODO:  move to be-linked
-// interface SignalInfo{
-//     eventTarget: EventTarget,
-//     type: string,
-// }
-// function getDefaultSignalInfo(enhancedElement: Element): SignalInfo{
-//     const {localName} = enhancedElement;
-//     switch(localName){
-//         case 'input':
-//             return {
-//                 eventTarget: enhancedElement,
-//                 type: 'input'
-//             }
-//     }
-//     throw 'NI';
-// }
 
 export const strType = String.raw `\/|\-`;
 
