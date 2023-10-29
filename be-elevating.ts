@@ -24,8 +24,13 @@ export class BeElevating  extends BE<AP, Actions> implements Actions{
 
     async noAttrs(self: this){
         const {enhancedElement} = self;
-        const {getDefaultRemoteRule} = await import('be-linked/getDefaultSignalInfo.js');
-        const elevateRule = getDefaultRemoteRule(enhancedElement);
+        //const {getDefaultRemoteRule} = await import('be-linked/getDefaultSignalInfo.js');
+        //const elevateRule = getDefaultRemoteRule(enhancedElement);
+        const {getRemoteProp} = await import('be-linked/defaults.js');
+        const elevateRule: ElevateRule = {
+            remoteProp: getRemoteProp(enhancedElement),
+            remoteType: '/'
+        };
         // const elevateRule: ElevateRule = {
         //     remoteType: '/',
         //     //TODO:  move this evaluation to be-linked -- shared with be-bound
