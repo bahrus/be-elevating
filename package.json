@@ -1,6 +1,6 @@
 {
   "name": "be-elevating",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Elevate local property value to host or upstream peer element when user initiates event.",
   "keywords": [
     "web-components",
