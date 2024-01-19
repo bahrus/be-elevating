@@ -2,7 +2,6 @@ import {BE, propDefaults, propInfo} from 'be-enhanced/BE.js';
 import {BEConfig} from 'be-enhanced/types';
 import {XE} from 'xtal-element/XE.js';
 import {Actions, AllProps, AP, PAP, ProPAP, POA, ElevateRule} from './types';
-import {register} from 'be-hive/register.js';
 import {nudge} from 'trans-render/lib/nudge.js';
 import {ElTypes, LocalSignal} from 'be-linked/types';
 import {getRemoteProp, getLocalSignal} from 'be-linked/defaults.js';
@@ -105,9 +104,8 @@ export const strType = String.raw `\/|\-`;
 
 export interface BeElevating extends AllProps{}
 
-const tagName = 'be-elevating';
-const ifWantsToBe = 'elevating';
-const upgrade = '*';
+export const tagName = 'be-elevating';
+
 
 const xe = new XE<AP, Actions>({
     config:{
@@ -133,5 +131,3 @@ const xe = new XE<AP, Actions>({
     },
     superclass: BeElevating
 });
-
-register(ifWantsToBe, upgrade, tagName);

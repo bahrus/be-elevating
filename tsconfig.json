@@ -8,7 +8,7 @@
 		"strict": true,
 	},
 	"files": [
-		"be-elevating.ts",
+		"behivior.ts",
 		"MyCustomElement/MyCustomElement.ts"
 	],
 	"exclude":[

@@ -1,6 +1,5 @@
 import { BE, propDefaults, propInfo } from 'be-enhanced/BE.js';
 import { XE } from 'xtal-element/XE.js';
-import { register } from 'be-hive/register.js';
 import { nudge } from 'trans-render/lib/nudge.js';
 import { getRemoteProp, getLocalSignal } from 'be-linked/defaults.js';
 export class BeElevating extends BE {
@@ -96,9 +95,7 @@ export class BeElevating extends BE {
     }
 }
 export const strType = String.raw `\/|\-`;
-const tagName = 'be-elevating';
-const ifWantsToBe = 'elevating';
-const upgrade = '*';
+export const tagName = 'be-elevating';
 const xe = new XE({
     config: {
         tagName,
@@ -123,4 +120,3 @@ const xe = new XE({
     },
     superclass: BeElevating
 });
-register(ifWantsToBe, upgrade, tagName);
