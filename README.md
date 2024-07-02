@@ -18,7 +18,8 @@ Elevate local property value to host or upstream peer element when user initiate
 
 What this does:
 
-It passes the checked property value of the input element to the *mood-stone*'s isHappy property any time (and only when) the input element's "input" event fires.
+1.  When attache, it removes the disabled attribute.
+2.  It passes the checked property value of the input element to the *mood-stone*'s isHappy property any time (and only when) the input element's "input" event fires.
 
 This is shorthand for:
 
@@ -36,7 +37,7 @@ which is shorthand for: [Untested]
 ```html
 <host-element>
     #shadow
-        <input be-elevating='of value to host prop on input.'>
+        <input disabled type=checkbox be-elevating='of checked to isHappy on input.'>
 </host-element>
 ```
 
