@@ -19,7 +19,7 @@ Elevate local property value to host or upstream peer element when user initiate
 What this does:
 
 1.  When attached, it removes the disabled attribute.
-2.  It passes the checked property value of the input element to the *mood-stone*'s isHappy property any time (and only when) the input element's "input" event fires.
+2.  It passes the checked property value of the input element up to the *mood-stone*'s isHappy property any time (and only when) the input element's "input" event fires.
 
 This is shorthand for:
 
@@ -35,13 +35,13 @@ This is shorthand for:
 which is shorthand for: [TODO]
 
 ```html
-<host-element>
+<mood-stone>
     #shadow
         <input disabled type=checkbox be-elevating='of checked to isHappy on input.'>
-</host-element>
+</mood-stone>
 ```
 
-Speaking of shorthand, the name "be-elevating" is a bit long for something that will be sprinkled throughout the HTML/template.
+Speaking of shorthand, the name "be-elevating" is a bit long for something that will likely be sprinkled throughout the HTML/template.
 
 That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating".
 
