@@ -1,7 +1,7 @@
 import {BE, propDefaults, propInfo} from 'be-enhanced/BE.js';
 import {BEConfig} from 'be-enhanced/types';
 import {XE} from 'xtal-element/XE.js';
-import {Actions, AllProps, AP, PAP, ProPAP, POA, ElevateRule} from './types';
+import {Actions, AllProps, AP, PAP, ProPAP, POA, ElevateRule} from '../types.js';
 import {nudge} from 'trans-render/lib/nudge.js';
 import {ElTypes, LocalSignal} from 'be-linked/types';
 import {getRemoteProp, getLocalSignal} from 'be-linked/defaults.js';

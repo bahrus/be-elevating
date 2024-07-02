@@ -1,5 +1,5 @@
 import { tryParse } from 'be-enhanced/cpu.js';
-import { strType } from './be-elevating.js';
+import { strType } from '../be-elevating.js';
 const remoteProp = String.raw `(?<remoteProp>[\w\-]+)`;
 const remoteType = String.raw `(?<remoteType>${strType})`;
 const onLocalEvent = String.raw `(?<!\\)On(?<localEvent>[\w]+)`;
