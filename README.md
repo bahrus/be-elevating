@@ -44,25 +44,25 @@ which is shorthand for: [Untested]
 ## Example 1c
 
 ```html
-<host-element>
+<mood-stone>
     #shadow
-        <input 
-            data-test='this text should appear on input.' disabled 
-            be-elevating='of dataset:test to some string prop.'
+        <input disabled
+            data-msg='Hello darkness my old friend'  
+            be-elevating='of dataset:msg to songLyricOfTheDay.'
         >
-</host-element>
+</mood-stone>
 ```
 
 ## Example 1d
 
 ```html
-<host-element>
+<mood-stone>
     #shadow
-        <input 
-            data-test='this text should appear on input.' disabled 
-            be-elevating='of dataset:test to some string prop on change.'
+        <input disabled
+            data-msg='Hello darkness my old friend'  
+            be-elevating='of dataset:msg to songLyricOfTheDay on change.'
         >
-</host-element>
+</mood-stone>
 ```
 
 Same thing is done for button element, which supports value attribute.
