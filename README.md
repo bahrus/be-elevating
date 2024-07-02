@@ -18,7 +18,7 @@ Elevate local property value to host or upstream peer element when user initiate
 
 What this does:
 
-It passes the value of the input element to the host element's hostProp property any time (and only when) the input element's "input" event fires.
+It passes the checked property value of the input element to the *mood-stone*'s isHappy property any time (and only when) the input element's "input" event fires.
 
 This is shorthand for:
 
