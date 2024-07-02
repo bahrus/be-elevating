@@ -10,10 +10,10 @@ Elevate local property value to host or upstream peer element when user initiate
 ## Example 1a
 
 ```html
-<my-custom-element>
+<mood-stone>
     #shadow
-        <input disabled name=hostProp be-elevating>
-</my-custom-element>
+        <input disabled type=checkbox name=isHappy be-elevating>
+</mood-stone>
 ```
 
 What this does:
@@ -25,10 +25,10 @@ This is shorthand for:
 ## Example 1b 
 
 ```html
-<host-element>
+<mood-stone>
     #shadow
-        <input disabled be-elevating='to host prop.'>
-</host-element>
+        <input disabled type=checkbox be-elevating='to isHappy.'>
+</mood-stone>
 ```
 
 which is shorthand for: [Untested]
