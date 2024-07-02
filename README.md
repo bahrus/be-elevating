@@ -1,4 +1,4 @@
-# be-elevating (🛗)
+# be-elevating (🛗) [TODO]
 
 Elevate local property value to host or upstream peer element when user initiates event.
 
@@ -7,7 +7,7 @@ Elevate local property value to host or upstream peer element when user initiate
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-elevating?compression=gzip">
 [![Playwright Tests](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml)
 
-## Example 1a
+## Example 1a [TODO]
 
 ```html
 <mood-stone>
@@ -23,7 +23,7 @@ What this does:
 
 This is shorthand for:
 
-## Example 1b 
+## Example 1b [TODO]
 
 ```html
 <mood-stone>
@@ -32,7 +32,7 @@ This is shorthand for:
 </mood-stone>
 ```
 
-which is shorthand for: [Untested]
+which is shorthand for: [TODO]
 
 ```html
 <host-element>
@@ -41,40 +41,61 @@ which is shorthand for: [Untested]
 </host-element>
 ```
 
-## Example 1c
+Speaking of shorthand, the name "be-elevating" is a bit long for something that will be sprinkled throughout the HTML/template.
+
+That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating".
+
+## Example 1c [TODO]
 
 ```html
 <mood-stone>
     #shadow
         <input disabled
             data-msg='Hello darkness my old friend'  
-            be-elevating='of dataset:msg to songLyricOfTheDay.'
+            🛗='of dataset:msg to songLyricOfTheDay.'
         >
 </mood-stone>
 ```
 
-## Example 1d
+The default event, as before, is "input".  But we can specify any other event:
+
+## Example 1d [TODO]
 
 ```html
 <mood-stone>
     #shadow
-        <input disabled
-            data-msg='Hello darkness my old friend'  
-            be-elevating='of dataset:msg to songLyricOfTheDay on change.'
+        <input disabled  
+            🛗='to songLyricOfTheDay on change.'
         >
 </mood-stone>
 ```
 
-Same thing is done for button element, which supports value attribute.
+Since there is no "of" clause, it will by default elevate the value of the input element.
 
-## Example 2a
+Same thing is done for button element, which also supports the value attribute/property:
+
+## Example 1e [TODO]
+
+```html
+<mood-stone>
+    #shadow
+        <button disabled
+            value='Hello darkness my old friend'  
+            🛗='to songLyricOfTheDay.'
+        >
+</mood-stone>
+```
+
+The default event type for buttons is "click".
+
+## Example 2a [TODO]
 
 ```html
 <host-element>
     #shadow
         <my-peer-element -my-string-prop></my-peer-element>
         ...
-        <input be-elevating='to -my-string-prop.'>
+        <input 🛗='to -my-string-prop.'>
 </host-element>
 ```
 
@@ -86,14 +107,14 @@ oMyPeerElement.myStringProp = oInput.value
 
 whenever the input element emits event "input".
 
-## Example 2b
+## Example 2b [TODO]
 
 ```html
 <host-element>
     #shadow
         <my-peer-element -my-string-prop></my-peer-element>
         ...
-        <input be-elevating='to -my-string-prop on change.'>
+        <input 🛗='to -my-string-prop on change.'>
 </host-element>
 ```
 
