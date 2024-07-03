@@ -40,6 +40,7 @@ class BeElevating extends BE {
     async hydrate(self) {
         const { parsedStatements, enhancedElement } = self;
         console.log({ parsedStatements });
+        const { nudge } = await import('trans-render/lib/nudge.js');
         for (const parsedStatement of parsedStatements) {
             let { localEventType, localPropToElevate } = parsedStatement;
             let et = enhancedElement;
@@ -53,8 +54,22 @@ class BeElevating extends BE {
                     localPropToElevate = prop;
                 console.log({ signal });
             }
+            const ac = new AbortController();
+            this.#abortControllers.push(ac);
+            et.addEventListener(localEventType, async (e) => {
+                const { remoteSpecifiers } = parsedStatement;
+                const { find } = await import('trans-render/dss/find.js');
+                for (const remoteSpecifier of remoteSpecifiers) {
+                    const remoteET = await find(enhancedElement, remoteSpecifier);
+                    const val = enhancedElement[localPropToElevate];
+                    const { prop } = remoteSpecifier;
+                    remoteET[prop] = val;
+                    console.log({ remoteSpecifier, remoteET, val });
+                }
+            }, { signal: ac.signal });
             console.log({ localEventType, et, localPropToElevate });
         }
+        nudge(enhancedElement);
         return {};
     }
 }

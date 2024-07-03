@@ -47,6 +47,7 @@ class BeElevating extends BE implements Actions {
     async hydrate(self: this){
         const {parsedStatements, enhancedElement} = self;
         console.log({parsedStatements});
+        const {nudge} = await import('trans-render/lib/nudge.js');
         for(const parsedStatement of parsedStatements!){
             let {localEventType, localPropToElevate} = parsedStatement;
             let et = enhancedElement;
@@ -56,10 +57,26 @@ class BeElevating extends BE implements Actions {
                 const {signal, prop, type, subProp} = ls;
                 if(localEventType === undefined) localEventType = type;
                 if(localPropToElevate === undefined) localPropToElevate = prop;
+                
+                
                 console.log({signal});
             }
+            const ac = new AbortController();
+            this.#abortControllers.push(ac);
+            et.addEventListener(localEventType, async e => {
+                const {remoteSpecifiers} = parsedStatement;
+                const {find} = await import('trans-render/dss/find.js');
+                for(const remoteSpecifier of remoteSpecifiers){
+                    const remoteET = await find(enhancedElement, remoteSpecifier);
+                    const val = (<any>enhancedElement)[localPropToElevate!];
+                    const {prop} = remoteSpecifier;
+                    (<any>remoteET)[prop!] = val;
+                    console.log({remoteSpecifier, remoteET, val});
+                }
+            }, {signal: ac.signal});
             console.log({localEventType, et, localPropToElevate})
         }
+        nudge(enhancedElement);
         return {
 
         } as PAP;
