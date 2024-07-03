@@ -18,7 +18,7 @@ export type PAP = Partial<AP>
 export type ProPAP  = Promise<PAP>
 
 export interface Actions{
-
+    noAttrs(self: this): ProPAP;
 }
 
 export interface ElevatingParameters {
