@@ -1,6 +1,7 @@
 import {IEnhancement} from 'trans-render/be/types';
 import {Target, Scope, ProxyPropChangeInfo} from 'trans-render/lib/types';
 import { Specifier } from 'trans-render/dss/types';
+import { LocalSignal } from '../be-linked/types';
 
 export interface EndUserProps extends IEnhancement{
 
@@ -19,6 +20,7 @@ export type ProPAP  = Promise<PAP>
 
 export interface Actions{
     noAttrs(self: this): ProPAP;
+    hydrate(self: this): ProPAP;
 }
 
 export interface ElevatingParameters {
@@ -26,3 +28,4 @@ export interface ElevatingParameters {
     remoteSpecifiers: Array<Specifier>,
     localEventType?: string,
 }
+

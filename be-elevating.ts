@@ -14,6 +14,9 @@ class BeElevating extends BE implements Actions {
         actions: {
             noAttrs: {
                 ifNoneOf: ['parsedStatements']
+            },
+            hydrate: {
+                ifAllOf: ['parsedStatements']
             }
         }
     }
@@ -36,6 +39,29 @@ class BeElevating extends BE implements Actions {
         }
         return {
             parsedStatements: [parsedStatement]
+        } as PAP;
+    }
+
+    #abortControllers: AbortController[] = [];
+
+    async hydrate(self: this){
+        const {parsedStatements, enhancedElement} = self;
+        console.log({parsedStatements});
+        for(const parsedStatement of parsedStatements!){
+            let {localEventType, localPropToElevate} = parsedStatement;
+            let et = enhancedElement;
+            if(localEventType === undefined || localPropToElevate === undefined){
+                const {getLocalSignal} = await import('be-linked/defaults.js');
+                const ls = await getLocalSignal(enhancedElement);
+                const {signal, prop, type, subProp} = ls;
+                if(localEventType === undefined) localEventType = type;
+                if(localPropToElevate === undefined) localPropToElevate = prop;
+                console.log({signal});
+            }
+            console.log({localEventType, et, localPropToElevate})
+        }
+        return {
+
         } as PAP;
     }
 }
