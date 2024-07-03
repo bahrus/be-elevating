@@ -1,43 +1,28 @@
-import { ActionOnEventConfigs } from "trans-render/froop/types";
-import {IBE} from 'be-enhanced/types';
-import {RemoteRule} from 'be-linked/types';
+import {IEnhancement} from 'trans-render/be/types';
+import {Target, Scope, ProxyPropChangeInfo} from 'trans-render/lib/types';
+import { Specifier } from 'trans-render/dss/types';
 
-export interface EndUserProps extends IBE{
-    of?: Array<OfStatement>,
-    Of?: Array<OfStatement>,
-    to?: Array<ToStatement>,
-    To?: Array<ToStatement>,
+export interface EndUserProps extends IEnhancement{
+
 }
 
-export interface AllProps extends EndUserProps{
-    isParsed?: boolean,
-    elevateRules?: Array<ElevateRule>,
+export interface AP extends EndUserProps {
+    parsedStatements?: Array<ElevatingParameters>,
+    rawStatements?: Array<string>,
 }
 
-export type AP = AllProps;
+export type AllProps = AP;
 
-export type PAP = Partial<AP>;
+export type PAP = Partial<AP>
 
-export type ProPAP = Promise<PAP>;
-
-export type POA = [PAP | undefined, ActionOnEventConfigs<PAP, Actions>];
+export type ProPAP  = Promise<PAP>
 
 export interface Actions{
-    onCamelized(self: this): ProPAP;
-    hydrate(self: this): ProPAP;
-    noAttrs(self: this): ProPAP;
+
 }
 
-
-export type OfStatement = string;
-export type ToStatement = string;
-
-export type ElTypes = '/' | '-';
-
-export interface ElevateRule extends RemoteRule{
-    localEvent?: string,
-    localProp?: string,
-    // remoteProp: string,
-    // remoteType: ElTypes,
-    // remoteRef?: WeakRef<Element>,
+export interface ElevatingParameters {
+    localPropToElevate?: string,
+    remoteSpecifiers: Array<Specifier>,
+    localEventType?: string,
 }

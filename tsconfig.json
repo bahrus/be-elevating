@@ -9,7 +9,7 @@
 	},
 	"files": [
 		"behivior.ts",
-		"MyCustomElement/MyCustomElement.ts"
+		"MoodStone/MoodStone.ts"
 	],
 	"exclude":[
 		"node_modules"

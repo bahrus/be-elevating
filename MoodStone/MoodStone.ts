@@ -1,38 +1,39 @@
 import '../MyPeerElement/MyPeerElement.js';
-export class MyCustomElement extends HTMLElement {
-    #someNumProp = 23;
-    get someNumProp() {
-        return this.#someNumProp;
+export class MoodStone extends HTMLElement{
+    #isHappy = false;
+    get isHappy(){
+        return this.#isHappy;
     }
-    set someNumProp(nv) {
-        console.log({ nv });
-        this.#someNumProp = nv;
+    set isHappy(nv){
+        console.log({nv});
+        this.#isHappy = nv;
         const strVal = nv === undefined ? '' : nv.toLocaleString();
-        const div = this.shadowRoot?.querySelector('#someNumPropVal');
-        if (div !== null && div !== undefined)
-            div.textContent = strVal;
+        const div = this.shadowRoot?.querySelector('#isHappy');
+        if(div !== null && div !== undefined) div.textContent = strVal;
     }
-    #someStringProp = '';
-    get someStringProp() {
-        return this.#someStringProp;
+
+    #songLyricOfTheDay: string = '';
+    get songLyricOfTheDay(){
+        return this.#songLyricOfTheDay;
     }
-    set someStringProp(nv) {
-        this.#someStringProp = nv;
-        const div = this.shadowRoot?.querySelector('#someStringPropVal');
-        if (div !== null && div !== undefined)
-            div.textContent = nv;
+    set songLyricOfTheDay(nv){
+        this.#songLyricOfTheDay = nv;
+        const div = this.shadowRoot?.querySelector('#songLyricOfTheDay');
+        if(div !== null && div !== undefined) div.textContent = nv;
     }
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
+
+    constructor(){
+        super()
+        this.attachShadow({mode: 'open'});
     }
-    connectedCallback() {
-        this.shadowRoot.innerHTML = String.raw `
+
+    connectedCallback(){
+        this.shadowRoot!.innerHTML = String.raw `
         <div itemscope>
-            <div  id=someNumPropVal></div>
-            <div  id=someStringPropVal></div>
+            <div  id=isHappy></div>
+            <div  id=songLyricOfTheDay></div>
             <h3>Example 1a</h3>
-            <input name=someNumProp type=number disabled be-elevating>
+            <input name=isHappy type=checkbox disabled be-elevating>
             <h3>Example 1b</h3>
             <input type=number disabled be-elevating='to some num prop.'>
             <h3>Example 1c</h3>
@@ -54,4 +55,5 @@ export class MyCustomElement extends HTMLElement {
         `;
     }
 }
-customElements.define('my-custom-element', MyCustomElement);
+
+customElements.define('mood-stone', MoodStone);
