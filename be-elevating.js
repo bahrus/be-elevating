@@ -1,6 +1,8 @@
 import { config as beCnfg } from 'be-enhanced/config.js';
 import { BE } from 'be-enhanced/BE.js';
+import { dispatchEvent as de } from 'trans-render/positractions/dispatchEvent.js';
 class BeElevating extends BE {
+    de = de;
     static config = {
         propInfo: {
             ...beCnfg.propInfo,
@@ -14,7 +16,8 @@ class BeElevating extends BE {
             hydrate: {
                 ifAllOf: ['parsedStatements']
             }
-        }
+        },
+        positractions: [...beCnfg.positractions]
     };
     async noAttrs(self) {
         const { enhancedElement } = self;
@@ -70,7 +73,9 @@ class BeElevating extends BE {
             console.log({ localEventType, et, localPropToElevate });
         }
         nudge(enhancedElement);
-        return {};
+        return {
+            resolved: true
+        };
     }
 }
 await BeElevating.bootUp();

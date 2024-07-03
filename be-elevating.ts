@@ -3,8 +3,10 @@ import {BE, BEConfig} from 'be-enhanced/BE.js';
 import {Actions, AllProps, AP,  ElevatingParameters,  PAP} from './types';
 import {IEnhancement,  BEAllProps, EnhancementInfo, EMC} from 'trans-render/be/types';
 import { Specifier } from 'trans-render/dss/types';
+import {dispatchEvent as de} from 'trans-render/positractions/dispatchEvent.js';
 
 class BeElevating extends BE implements Actions {
+    de = de;
     static override config: BEConfig<AP & BEAllProps, Actions & IEnhancement, any> = {
         propInfo: {
             ...beCnfg.propInfo,
@@ -18,7 +20,8 @@ class BeElevating extends BE implements Actions {
             hydrate: {
                 ifAllOf: ['parsedStatements']
             }
-        }
+        },
+        positractions: [...beCnfg.positractions!]
     }
 
     async noAttrs(self: this){
@@ -78,7 +81,7 @@ class BeElevating extends BE implements Actions {
         }
         nudge(enhancedElement);
         return {
-
+            resolved: true
         } as PAP;
     }
 }
