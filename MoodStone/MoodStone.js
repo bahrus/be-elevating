@@ -5,7 +5,6 @@ export class MoodStone extends HTMLElement {
         return this.#isHappy;
     }
     set isHappy(nv) {
-        console.log({ nv });
         this.#isHappy = nv;
         const strVal = nv === undefined ? '' : nv.toLocaleString();
         const div = this.shadowRoot?.querySelector('#isHappy');

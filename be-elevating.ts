@@ -53,7 +53,6 @@ class BeElevating extends BE implements Actions {
 
     async hydrate(self: this){
         const {parsedStatements, enhancedElement, passSRV} = self;
-        console.log({parsedStatements});
         const {nudge} = await import('trans-render/lib/nudge.js');
         for(const parsedStatement of parsedStatements!){
             let {localEventType, localPropToElevate} = parsedStatement;
@@ -64,32 +63,12 @@ class BeElevating extends BE implements Actions {
                 const {signal, prop, type, subProp} = ls;
                 if(localEventType === undefined) localEventType = type;
                 if(localPropToElevate === undefined) localPropToElevate = prop;
-                
-                
-                console.log({signal});
             }
             const ac = new AbortController();
             this.#abortControllers.push(ac);
             et.addEventListener(localEventType, e => {
                 this.#passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate!);
-                // const {remoteSpecifiers} = parsedStatement;
-                // const {find} = await import('trans-render/dss/find.js');
-                // for(const remoteSpecifier of remoteSpecifiers){
-                //     const remoteET = await find(enhancedElement, remoteSpecifier);
-                //     let val: any;
-                //     //TODO:  maybe be-hive should have a special way of mapping this?
-                //     if(localPropToElevate![0] === ':'){
-                //         const {getVal} = await import('trans-render/lib/getVal.js');
-                //         val = await getVal({host: enhancedElement}, localPropToElevate!.replaceAll(':', '.'));
-                //     }else{
-                //         val = (<any>enhancedElement)[localPropToElevate!];
-                //     }
-                //     const {prop} = remoteSpecifier;
-                //     (<any>remoteET)[prop!] = val;
-                //     console.log({remoteSpecifier, remoteET, val});
-                // }
             }, {signal: ac.signal});
-            console.log({localEventType, et, localPropToElevate});
             if(passSRV){
                 this.#passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate!);
             }
@@ -115,7 +94,6 @@ class BeElevating extends BE implements Actions {
             }
             const {prop} = remoteSpecifier;
             (<any>remoteET)[prop!] = val;
-            console.log({remoteSpecifier, remoteET, val});
         }
     }
 
