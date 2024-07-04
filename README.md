@@ -70,7 +70,7 @@ The default event, as before, is "input".  But we can specify any other event:
 </mood-stone>
 ```
 
-Since there is no "of" clause, it will by default elevate the value of the input element.
+Since there is no "of" clause, it will by default elevate the "value" of the input element (since type isn't checkbox).
 
 Same thing is done for button element, which also supports the value attribute/property:
 

@@ -68,6 +68,7 @@ class BeElevating extends BE {
                 for (const remoteSpecifier of remoteSpecifiers) {
                     const remoteET = await find(enhancedElement, remoteSpecifier);
                     let val;
+                    //TODO:  maybe be-hive should have a special way of mapping this?
                     if (localPropToElevate[0] === ':') {
                         const { getVal } = await import('trans-render/lib/getVal.js');
                         val = await getVal({ host: enhancedElement }, localPropToElevate.replaceAll(':', '.'));
