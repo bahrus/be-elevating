@@ -36,7 +36,7 @@ This is shorthand for:
 
 The name "be-elevating" is a bit long for something that will likely be sprinkled throughout the HTML/template.
 
-That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating".
+That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating" in the examples that follow.
 
 ## Example 1c - specifying local property to pass, and target property
 
@@ -91,6 +91,17 @@ Same thing is done for button element, which also supports the value attribute/p
 ```
 
 The default event type for buttons is "click".
+
+# Part II Passing to (upstream) peer elements.
+
+*be-elevating* adopts the philosophy that a viable design for a web component is one that is modeled after a "democratic organism" -- the web component host may only provide a thin "skin" layer that allows in a limited amount of stimuli from outside.
+
+Within the web component sits one or more non visual "brain" web components that do the deep thinking.  The role of *be-elevating", then, is to dispatch events from internal "organ" components "up" to the brain.  Other enhancements, like [*be-observant*](https://github.com/bahrus/be-observant), [*be-calculating*](https://github.com/bahrus/be-calculating) focus on the other direction -- from the brain "down" to the visual components.  The words "up" and "down" here are likely to match the preferred markup layout of where the components are likely to sit, but not always.
+
+A more accurate way of thinking about "up" or "down" is that the "down" components are the ones closer to the user's finger tips / mouse pointers.  The "up components" are likely to be "closer" conceptually to the cloud from which data comes and goes.
+
+
+The expression following
 
 ## Example 2a [TODO]
 
