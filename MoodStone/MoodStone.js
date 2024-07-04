@@ -1,4 +1,4 @@
-import '../MyPeerElement/MyPeerElement.js';
+import '../SoulSearcher/SoulSearcher.js';
 export class MoodStone extends HTMLElement {
     #isHappy = false;
     get isHappy() {
@@ -49,17 +49,17 @@ export class MoodStone extends HTMLElement {
             <input disabled
                 🛗='to songLyricOfTheDay on change.'
             > -->
-            <h3>Example 1f</h3>
+            <!-- <h3>Example 1f</h3>
             <button disabled
                 value='Hello darkness my old friend'  
                 🛗='to songLyricOfTheDay.'
-            >Sounds of Silence</button>
-            <!--<h3>Example 2a</h3>
+            >Sounds of Silence</button> -->
+            <h3>Example 2a</h3>
             
-            <my-peer-element -my-string-prop></my-peer-element>
+            <soul-searcher -second-thoughts></soul-searcher>
             ...
-            <input be-elevating='to -my-string-prop.'>
-            <h3>Example 2b</h3>
+            <input be-elevating='to -second-thoughts.'>
+            <!--<h3>Example 2b</h3>
             <my-peer-element -my-string-prop></my-peer-element>
             ...
             <input be-elevating='to -my-string-prop on change.'> -->

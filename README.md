@@ -96,12 +96,16 @@ The default event type for buttons is "click".
 
 *be-elevating* adopts the philosophy that a viable design pattern for a web component is one that is modeled after a "democratic organism" -- the web component host may only provide a thin "skin" layer that allows in a limited amount of stimuli from outside.
 
-Within the web component sits one or more non visual "brain" web components that do the deep thinking.  The role of *be-elevating*, then, is to dispatch events from internal "organ" components "up" to the brain.  Other enhancements, like [*be-observant*](https://github.com/bahrus/be-observant), [*be-calculating*](https://github.com/bahrus/be-calculating) focus on the other direction -- from the brain "down" to the visual components.  The words "up" and "down" here are *likely*, but **not** guaranteed to match the preferred markup layout/order of where the components are likely to sit on the page.
+Within the web component sits one or more non visual "brain" web components that do the deep thinking.  The role of *be-elevating*, then, is to dispatch events from internal "organ" components "up" to the brain.  
+
+Other enhancements, like [*be-observant*](https://github.com/bahrus/be-observant), [*be-calculating*](https://github.com/bahrus/be-calculating) focus on the other direction -- passing updates from the brain "down" to the visual components.  
+
+The words "up" and "down" here are *likely*, but **not** *guaranteed*, to match the preferred markup layout/order of where the components are likely to sit on the page.
 
 A more accurate way of thinking about "up" or "down" is that the "down" components are the ones closer to the user's finger tips / mouse pointers.  The "up components" are likely to be "closer" conceptually to the cloud from which data comes and goes.
 
 
-## Example 2a [TODO]
+## Example 2a
 
 ```html
 <mood-stone>
