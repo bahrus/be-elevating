@@ -74,7 +74,13 @@ class BeElevating extends BE implements Actions {
                 const {find} = await import('trans-render/dss/find.js');
                 for(const remoteSpecifier of remoteSpecifiers){
                     const remoteET = await find(enhancedElement, remoteSpecifier);
-                    const val = (<any>enhancedElement)[localPropToElevate!];
+                    let val: any;
+                    if(localPropToElevate![0] === ':'){
+                        const {getVal} = await import('trans-render/lib/getVal.js');
+                        val = await getVal({host: enhancedElement}, localPropToElevate!.replaceAll(':', '.'));
+                    }else{
+                        val = (<any>enhancedElement)[localPropToElevate!];
+                    }
                     const {prop} = remoteSpecifier;
                     (<any>remoteET)[prop!] = val;
                     console.log({remoteSpecifier, remoteET, val});

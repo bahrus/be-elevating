@@ -39,7 +39,7 @@ export class MoodStone extends HTMLElement{
             <h3>Example 1c</h3>
             <input disabled
                 data-msg='Hello darkness my old friend'  
-                🛗='of dataset:msg to songLyricOfTheDay.'
+                🛗='of :dataset:msg to songLyricOfTheDay.'
             >
             <!--<h3>Example 1d</h3>
             <input data-test='this text should appear on input.' disabled 
