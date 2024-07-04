@@ -1,6 +1,11 @@
 import {BeHive, EMC, seed, MountObserver} from 'be-hive/be-hive.js';
 import {AP} from './types';
 
+const dssKeys = [['dependencyPart', 'remoteSpecifiers[]']] as [string, string][];
+
+const dependencyPart = String.raw `(?<dependencyPart>.*)`;
+const toRemoteSpecifiers = String.raw `^(t|T)o ${dependencyPart}`;
+
 export const emc: EMC<any, AP> = {
     base: 'be-elevating',
     map: {
@@ -9,7 +14,11 @@ export const emc: EMC<any, AP> = {
             objValMapsTo: '.',
             regExpExts: {
                 parsedStatements: [
-                    
+                    {
+                        regExp: toRemoteSpecifiers,
+                        defaultVals: {},
+                        dssKeys,
+                    }
                 ]
             }
         }
