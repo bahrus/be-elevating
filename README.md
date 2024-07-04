@@ -18,7 +18,7 @@ Elevate local property value to host or upstream peer element when user initiate
 
 What this does:
 
-1.  When attached, it removes the disabled attribute.
+1.  After finishing attaching and hydrating, it removes the disabled attribute, so that no enabled clicks were missed.
 2.  It passes the checked property value of the input element up to the *mood-stone*'s isHappy property any time (and only when) the input element's "input" event fires.
 
 This is shorthand for:
@@ -45,7 +45,7 @@ Speaking of shorthand, the name "be-elevating" is a bit long for something that 
 
 That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating".
 
-## Example 1c [TODO]
+## Example 1c
 
 ```html
 <mood-stone>
