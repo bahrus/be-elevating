@@ -1,4 +1,4 @@
-# be-elevating (🛗) [WIP]
+# be-elevating (🛗)
 
 Elevate local property value to host or upstream peer element when user initiates event.
 
@@ -105,7 +105,7 @@ The words "up" and "down" here are *likely*, but **not** *guaranteed*, to match 
 A more accurate way of thinking about "up" or "down" is that the "down" components are the ones closer to the user's finger tips / mouse pointers.  The "up components" are likely to be "closer" conceptually to the cloud from which data comes and goes.
 
 
-## Example 2a
+## Example 2a Specify property to target via marker.
 
 ```html
 <mood-stone>
@@ -126,7 +126,7 @@ whenever the input element emits event "input".
 
 The search for an element with attribute is done via the nearest element adorned with the "itemscope" attribute.  If no such closest container is found, it searches within the root node.  If the web component is not using ShadowDOM, that can be quite dangerous, as the root node will actually be the top level document object of the page.
 
-## Example 2b
+## Example 2b - Set initial value from server rendered content
 
 If we want the (server-rendered) initial value of the input element to get passed straight-away to the *soul-searcher* element, we can do so:
 
@@ -152,7 +152,7 @@ If we want the (server-rendered) initial value of the input element to get passe
 </mood-stone>
 ```
 
-## Example 2d [TODO]
+## Example 2d
 
 ```html
 <mood-stone>
