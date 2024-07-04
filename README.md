@@ -84,7 +84,7 @@ Same thing is done for button element, which also supports the value attribute/p
         <button disabled
             value='Hello darkness my old friend'  
             🛗='to songLyricOfTheDay.'
-        >
+        >Sounds of Silence</button>
 </mood-stone>
 ```
 

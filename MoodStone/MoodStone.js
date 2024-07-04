@@ -45,10 +45,15 @@ export class MoodStone extends HTMLElement {
                 data-msg='Hello darkness my old friend'  
                 🛗='of :dataset:msg to songLyricOfTheDay on change.'
             > -->
-            <h3>Example 1e</h3>
+            <!-- <h3>Example 1e</h3>
             <input disabled
                 🛗='to songLyricOfTheDay on change.'
-            >
+            > -->
+            <h3>Example 1f</h3>
+            <button disabled
+                value='Hello darkness my old friend'  
+                🛗='to songLyricOfTheDay.'
+            >Sounds of Silence</button>
             <!--<h3>Example 2a</h3>
             
             <my-peer-element -my-string-prop></my-peer-element>
