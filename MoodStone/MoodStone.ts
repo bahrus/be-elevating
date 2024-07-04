@@ -32,6 +32,7 @@ export class MoodStone extends HTMLElement{
         <div itemscope>
             <div  id=isHappy></div>
             <div  id=songLyricOfTheDay></div>
+            <soul-searcher -second-thoughts></soul-searcher>
             <!-- <h3>Example 1a</h3>
             <input name=isHappy type=checkbox disabled be-elevating>
             <h3>Example 1b</h3>
@@ -55,11 +56,15 @@ export class MoodStone extends HTMLElement{
                 value='Hello darkness my old friend'  
                 🛗='to songLyricOfTheDay.'
             >Sounds of Silence</button> -->
-            <h3>Example 2a</h3>
+            <!-- <h3>Example 2a</h3>
             
-            <soul-searcher -second-thoughts></soul-searcher>
-            ...
-            <input be-elevating='to -second-thoughts.'>
+            
+            
+            <input 🛗='to -second-thoughts.'> -->
+            <h3>Example 2b</h3>
+            
+            
+            <input 🛗='to -second-thoughts.' 🛗-pass-srv value="Did I vote for the right person?">
             <!--<h3>Example 2b</h3>
             <my-peer-element -my-string-prop></my-peer-element>
             ...

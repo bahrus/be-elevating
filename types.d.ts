@@ -4,7 +4,11 @@ import { Specifier } from 'trans-render/dss/types';
 import { LocalSignal } from '../be-linked/types';
 
 export interface EndUserProps extends IEnhancement{
-
+    /**
+     * abbrev for pass server-rendered value
+     * This will pass the initial value from the enhanced element if applicable
+     */
+    passSRV?: boolean
 }
 
 export interface AP extends EndUserProps {

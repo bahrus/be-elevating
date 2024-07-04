@@ -12,6 +12,7 @@ const toRemoteSpecifiersOnLocalEventType = String.raw `${toRemoteSpecifiers}${on
 
 export const emc: EMC<any, AP> = {
     base: 'be-elevating',
+    branches: ['', 'pass-srv'],
     map: {
         '0.0': {
             instanceOf: 'Object$entences',
@@ -41,6 +42,10 @@ export const emc: EMC<any, AP> = {
                 ]
             },
 
+        },
+        '1.0': {
+            instanceOf: 'Boolean',
+            mapsTo: 'passSRV'
         }
     },
     enhPropKey: 'beElevating',
