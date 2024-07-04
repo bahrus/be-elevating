@@ -32,8 +32,8 @@ export class MoodStone extends HTMLElement{
         <div itemscope>
             <div  id=isHappy></div>
             <div  id=songLyricOfTheDay></div>
-            <!-- <h3>Example 1a</h3>
-            <input name=isHappy type=checkbox disabled be-elevating> -->
+            <h3>Example 1a</h3>
+            <input name=isHappy type=checkbox disabled be-elevating>
             <h3>Example 1b</h3>
             <input type=checkbox disabled be-elevating='to isHappy.'>
             <!--<h3>Example 1c</h3>
