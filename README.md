@@ -76,7 +76,7 @@ Since there is no "of" clause, it will by default elevate the "value" of the inp
 
 Same thing is done for button element, which also supports the value attribute/property:
 
-## Example 1f -  [TODO]
+## Example 1f -  Specify target property on button element
 
 ```html
 <mood-stone>
