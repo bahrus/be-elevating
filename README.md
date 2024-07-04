@@ -7,6 +7,8 @@ Elevate local property value to host or upstream peer element when user initiate
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-elevating?compression=gzip">
 [![Playwright Tests](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml)
 
+# Part I - Elevating local values to the custom element host.
+
 ## Example 1a  - total mind reading
 
 ```html
