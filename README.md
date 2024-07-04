@@ -96,7 +96,7 @@ The default event type for buttons is "click".
 
 *be-elevating* adopts the philosophy that a viable design pattern for a web component is one that is modeled after a "democratic organism" -- the web component host may only provide a thin "skin" layer that allows in a limited amount of stimuli from outside.
 
-Within the web component sits one or more non visual "brain" web components that do the deep thinking.  The role of *be-elevating", then, is to dispatch events from internal "organ" components "up" to the brain.  Other enhancements, like [*be-observant*](https://github.com/bahrus/be-observant), [*be-calculating*](https://github.com/bahrus/be-calculating) focus on the other direction -- from the brain "down" to the visual components.  The words "up" and "down" here are *likely*, but **not** guaranteed to match the preferred markup layout of where the components are likely to sit on the page.
+Within the web component sits one or more non visual "brain" web components that do the deep thinking.  The role of *be-elevating*, then, is to dispatch events from internal "organ" components "up" to the brain.  Other enhancements, like [*be-observant*](https://github.com/bahrus/be-observant), [*be-calculating*](https://github.com/bahrus/be-calculating) focus on the other direction -- from the brain "down" to the visual components.  The words "up" and "down" here are *likely*, but **not** guaranteed to match the preferred markup layout/order of where the components are likely to sit on the page.
 
 A more accurate way of thinking about "up" or "down" is that the "down" components are the ones closer to the user's finger tips / mouse pointers.  The "up components" are likely to be "closer" conceptually to the cloud from which data comes and goes.
 
@@ -131,21 +131,32 @@ If we want the (server-rendered) initial value of the input element to get passe
     #shadow
         <soul-searcher -second-thoughts></soul-searcher>
         ...
-        <input 🛗='to -second-thoughts.' value="did I vote for the right person?" 🛗-pass-srv>
+        <input 🛗='to -second-thoughts.' value="Did I vote for the right person?" 🛗-pass-srv>
 </mood-stone>
 ```
 
-"srv" stands for "server-rendered-value"
+"srv" stands for "server-rendered-value" (and also works with server-generated values).
 
-## Example 2b [TODO]
+## Example 2c [TODO]
 
 ```html
-<host-element>
+<mood-stone>
     #shadow
-        <my-peer-element -my-string-prop></my-peer-element>
+        <soul-searcher -second-thoughts></soul-searcher>
         ...
-        <input 🛗='to -my-string-prop on change.'>
-</host-element>
+        <input 🛗='to -second-thoughts on change.'>
+</mood-stone>
+```
+
+## Example 2d [TODO]
+
+```html
+<mood-stone>
+    #shadow
+        <soul-searcher></soul-searcher>
+        ...
+        <input 🛗='to ~soulSearcher:secondThoughts on change.'>
+</mood-stone>
 ```
 
 ## Viewing Demos Locally

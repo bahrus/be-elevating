@@ -5,6 +5,7 @@ export const emc: EMC = {
     ...baseEMC,
     base: '🛗',
     enhPropKey: '🛗',
+    
 };
 
 const mose = seed(emc);
