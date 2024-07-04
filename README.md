@@ -101,26 +101,28 @@ Within the web component sits one or more non visual "brain" web components that
 A more accurate way of thinking about "up" or "down" is that the "down" components are the ones closer to the user's finger tips / mouse pointers.  The "up components" are likely to be "closer" conceptually to the cloud from which data comes and goes.
 
 
-The expression following
-
 ## Example 2a [TODO]
 
 ```html
-<host-element>
+<mood-stone>
     #shadow
-        <my-peer-element -my-string-prop></my-peer-element>
+        <soul-searcher -second-thoughts></soul-searcher>
         ...
-        <input 🛗='to -my-string-prop.'>
+        <input 🛗='to -second-thoughts.'>
 </host-element>
 ```
 
 This sets:
 
 ```JavaScript
-oMyPeerElement.myStringProp = oInput.value
+oSoulSearcherElement.secondThoughts = oInput.value
 ```
 
 whenever the input element emits event "input".
+
+## Example 2b [TODO]
+
+
 
 ## Example 2b [TODO]
 
