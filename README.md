@@ -7,7 +7,7 @@ Elevate local property value to host or upstream peer element when user initiate
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-elevating?compression=gzip">
 [![Playwright Tests](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-elevating/actions/workflows/CI.yml)
 
-## Example 1a
+## Example 1a  - total mind reading
 
 ```html
 <mood-stone>
@@ -23,7 +23,7 @@ What this does:
 
 This is shorthand for:
 
-## Example 1b
+## Example 1b - specifying target property of host
 
 ```html
 <mood-stone>
@@ -32,20 +32,11 @@ This is shorthand for:
 </mood-stone>
 ```
 
-which is shorthand for: [TODO]
-
-```html
-<mood-stone>
-    #shadow
-        <input disabled type=checkbox be-elevating='of checked to isHappy on input.'>
-</mood-stone>
-```
-
-Speaking of shorthand, the name "be-elevating" is a bit long for something that will likely be sprinkled throughout the HTML/template.
+The name "be-elevating" is a bit long for something that will likely be sprinkled throughout the HTML/template.
 
 That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating".
 
-## Example 1c
+## Example 1c - specifying local property to pass, and target property
 
 ```html
 <mood-stone>
@@ -59,7 +50,18 @@ That is the canonical name.  The developer can, in less formal settings, especia
 
 The default event, as before, is "input".  But we can specify any other event:
 
-## Example 1d
+## Example 1d - specifying the local property to pass and the target property and the local event
+
+```html
+<mood-stone>
+    #shadow
+        <input data-msg='Hello darkness my old friend' disabled  
+            🛗='of :dataset:msg to songLyricOfTheDay on change.'
+        >
+</mood-stone>
+```
+
+## Example 1e - specify the target property and local event
 
 ```html
 <mood-stone>
@@ -74,7 +76,7 @@ Since there is no "of" clause, it will by default elevate the "value" of the inp
 
 Same thing is done for button element, which also supports the value attribute/property:
 
-## Example 1e [TODO]
+## Example 1f -  [TODO]
 
 ```html
 <mood-stone>

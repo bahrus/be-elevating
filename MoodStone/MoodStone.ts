@@ -41,10 +41,14 @@ export class MoodStone extends HTMLElement{
                 data-msg='Hello darkness my old friend'  
                 🛗='of :dataset:msg to songLyricOfTheDay.'
             > -->
-            <h3>Example 1d</h3>
+            <!-- <h3>Example 1d</h3>
             <input disabled
                 data-msg='Hello darkness my old friend'  
                 🛗='of :dataset:msg to songLyricOfTheDay on change.'
+            > -->
+            <h3>Example 1e</h3>
+            <input disabled
+                🛗='to songLyricOfTheDay on change.'
             >
             <!--<h3>Example 2a</h3>
             
