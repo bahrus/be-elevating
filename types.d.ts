@@ -21,6 +21,7 @@ export type ProPAP  = Promise<PAP>
 export interface Actions{
     noAttrs(self: this): ProPAP;
     hydrate(self: this): ProPAP;
+    onRawStatements(self: this): void;
 }
 
 export interface ElevatingParameters {

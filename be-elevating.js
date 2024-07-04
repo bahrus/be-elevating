@@ -77,6 +77,10 @@ class BeElevating extends BE {
             resolved: true
         };
     }
+    onRawStatements(self) {
+        const { rawStatements } = self;
+        console.error(400, rawStatements);
+    }
 }
 await BeElevating.bootUp();
 export { BeElevating };

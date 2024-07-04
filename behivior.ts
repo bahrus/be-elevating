@@ -5,6 +5,7 @@ const dssKeys = [['dependencyPart', 'remoteSpecifiers[]']] as [string, string][]
 
 const dependencyPart = String.raw `(?<dependencyPart>.*)`;
 const toRemoteSpecifiers = String.raw `^(t|T)o ${dependencyPart}`;
+const ofLocalPropToRemoteSpecifiers = String.raw `^(o|O)f (?<localPropToElevate>[\w\:\+]+) to ${dependencyPart}`;
 
 export const emc: EMC<any, AP> = {
     base: 'be-elevating',
@@ -14,6 +15,11 @@ export const emc: EMC<any, AP> = {
             objValMapsTo: '.',
             regExpExts: {
                 parsedStatements: [
+                    {
+                        RegExp: ofLocalPropToRemoteSpecifiers,
+                        defaultVals: {},
+                        dssKeys,
+                    },
                     {
                         regExp: toRemoteSpecifiers,
                         defaultVals: {},

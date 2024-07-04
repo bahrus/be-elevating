@@ -9,6 +9,7 @@
 	},
 	"files": [
 		"behivior.ts",
+		"🛗.ts",
 		"MoodStone/MoodStone.ts"
 	],
 	"exclude":[

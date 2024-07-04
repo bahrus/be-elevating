@@ -84,6 +84,11 @@ class BeElevating extends BE implements Actions {
             resolved: true
         } as PAP;
     }
+
+    onRawStatements(self: this) {
+        const {rawStatements} = self;
+        console.error(400, rawStatements);
+    }
 }
 
 interface BeElevating extends AP{}
