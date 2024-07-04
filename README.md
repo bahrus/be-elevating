@@ -109,7 +109,7 @@ A more accurate way of thinking about "up" or "down" is that the "down" componen
         <soul-searcher -second-thoughts></soul-searcher>
         ...
         <input 🛗='to -second-thoughts.'>
-</host-element>
+</mood-stone>
 ```
 
 This sets:
@@ -122,7 +122,18 @@ whenever the input element emits event "input".
 
 ## Example 2b [TODO]
 
+If we want the (server-rendered) initial value of the input element to get passed straight-away to the *soul-searcher* element, we can do so:
 
+```html
+<mood-stone>
+    #shadow
+        <soul-searcher -second-thoughts></soul-searcher>
+        ...
+        <input 🛗='to -second-thoughts.' 🛗-pass-srv>
+</mood-stone>
+```
+
+"srv" stands for "server-rendered-value"
 
 ## Example 2b [TODO]
 
