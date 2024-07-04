@@ -59,7 +59,7 @@ That is the canonical name.  The developer can, in less formal settings, especia
 
 The default event, as before, is "input".  But we can specify any other event:
 
-## Example 1d [TODO]
+## Example 1d
 
 ```html
 <mood-stone>

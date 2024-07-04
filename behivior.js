@@ -3,6 +3,7 @@ const dssKeys = [['dependencyPart', 'remoteSpecifiers[]']];
 const dependencyPart = String.raw `(?<dependencyPart>.*)`;
 const toRemoteSpecifiers = String.raw `^(t|T)o ${dependencyPart}`;
 const ofLocalPropToRemoteSpecifiers = String.raw `^(o|O)f (?<localPropToElevate>[\w\:\$\+]+) to ${dependencyPart}`;
+const ofLocalPropToRemoteSpecifiersOnLocalEventType = String.raw `${ofLocalPropToRemoteSpecifiers} on (?<localEventType>.*)`;
 export const emc = {
     base: 'be-elevating',
     map: {
@@ -11,6 +12,11 @@ export const emc = {
             objValMapsTo: '.',
             regExpExts: {
                 parsedStatements: [
+                    {
+                        regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
+                        defaultVals: {},
+                        dssKeys,
+                    },
                     {
                         regExp: ofLocalPropToRemoteSpecifiers,
                         defaultVals: {},
