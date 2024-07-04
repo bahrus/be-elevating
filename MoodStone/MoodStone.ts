@@ -61,10 +61,10 @@ export class MoodStone extends HTMLElement{
             
             
             <input 🛗='to -second-thoughts.'> -->
-            <h3>Example 2b</h3>
-            
-            
-            <input 🛗='to -second-thoughts.' 🛗-pass-srv value="Did I vote for the right person?">
+            <!-- <h3>Example 2b</h3>
+            <input 🛗='to -second-thoughts.' 🛗-pass-srv value="Did I vote for the right person?"> -->
+            <h3>Example 2c</h3>
+            <input 🛗='to -second-thoughts on change.' 🛗-pass-srv value="Did I vote for the right person?">
             <!--<h3>Example 2b</h3>
             <my-peer-element -my-string-prop></my-peer-element>
             ...
