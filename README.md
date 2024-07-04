@@ -131,7 +131,7 @@ If we want the (server-rendered) initial value of the input element to get passe
     #shadow
         <soul-searcher -second-thoughts></soul-searcher>
         ...
-        <input 🛗='to -second-thoughts.' 🛗-pass-srv>
+        <input 🛗='to -second-thoughts.' value="did I vote for the right person?" 🛗-pass-srv>
 </mood-stone>
 ```
 
