@@ -33,45 +33,37 @@ export class MoodStone extends HTMLElement{
             <div  id=isHappy></div>
             <div  id=songLyricOfTheDay></div>
             <soul-searcher -second-thoughts></soul-searcher>
-            <!-- <h3>Example 1a</h3>
+            <h3>Example 1a</h3>
             <input name=isHappy type=checkbox disabled be-elevating>
             <h3>Example 1b</h3>
-            <input type=checkbox disabled be-elevating='to isHappy.'> -->
-            <!-- <h3>Example 1c</h3>
+            <input type=checkbox disabled be-elevating='to isHappy.'>
+            <h3>Example 1c</h3>
             <input disabled
                 data-msg='Hello darkness my old friend'  
                 🛗='of :dataset:msg to songLyricOfTheDay.'
-            > -->
-            <!-- <h3>Example 1d</h3>
+            >
+            <h3>Example 1d</h3>
             <input disabled
                 data-msg='Hello darkness my old friend'  
                 🛗='of :dataset:msg to songLyricOfTheDay on change.'
-            > -->
-            <!-- <h3>Example 1e</h3>
+            >
+            <h3>Example 1e</h3>
             <input disabled
                 🛗='to songLyricOfTheDay on change.'
-            > -->
-            <!-- <h3>Example 1f</h3>
-            <button disabled
-                value='Hello darkness my old friend'  
-                🛗='to songLyricOfTheDay.'
-            >Sounds of Silence</button> -->
-            <!-- <h3>Example 2a</h3>
+            >
             
             
-            
-            <input 🛗='to -second-thoughts.'> -->
-            <!-- <h3>Example 2b</h3>
-            <input 🛗='to -second-thoughts.' 🛗-pass-srv value="Did I vote for the right person?"> -->
-            <!-- <h3>Example 2c</h3>
-            <input 🛗='to -second-thoughts on change.' 🛗-pass-srv value="Did I vote for the right person?"> -->
+
+            <h3>Example 2a</h3>
+            <input 🛗='to -second-thoughts.'>
+            <h3>Example 2b</h3>
+            <input 🛗='to -second-thoughts.' 🛗-pass-srv value="Did I vote for the right person?">
+            <h3>Example 2c</h3>
+            <input 🛗='to -second-thoughts on change.' 🛗-pass-srv value="Did I vote for the right person?">
 
             <h3>Example 2d</h3>
             <input 🛗='to ~soulSearcher:secondThoughts on change.'>
-            <!--<h3>Example 2b</h3>
-            <my-peer-element -my-string-prop></my-peer-element>
-            ...
-            <input be-elevating='to -my-string-prop on change.'> -->
+
         </div>
         <be-hive></be-hive>
         `;
