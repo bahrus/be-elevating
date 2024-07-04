@@ -15,6 +15,9 @@ class BeElevating extends BE {
             },
             hydrate: {
                 ifAllOf: ['parsedStatements']
+            },
+            onRawStatements: {
+                ifAllOf: ['rawStatements']
             }
         },
         positractions: [...beCnfg.positractions]

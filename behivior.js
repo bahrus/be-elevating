@@ -22,7 +22,7 @@ export const emc = {
                         dssKeys,
                     }
                 ]
-            }
+            },
         }
     },
     enhPropKey: 'beElevating',
