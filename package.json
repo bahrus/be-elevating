@@ -29,7 +29,7 @@
     "trans-render": "0.0.874"
   },
   "devDependencies": {
-    "may-it-serve": "0.0.9",
+    "ssi-server": "0.0.1",
     "@playwright/test": "1.49.1"
   },
   "author": "Bruce B. Anderson <anderson.bruce.b@gmail.com>",
