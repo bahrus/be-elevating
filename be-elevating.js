@@ -85,6 +85,7 @@ class BeElevating extends BE {
             this.addLocalAbs(localAbsObj, remoteShareObj);
         }
         const { nudge } = await import('trans-render/lib/nudge.js');
+        nudge(enhancedElement);
         return /** type {PAP} */ ({
             resolved: true
         });
