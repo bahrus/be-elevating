@@ -11,6 +11,10 @@ const onLocalEventType = String.raw ` on (?<localEventType>.*)`;
 const ofLocalPropToRemoteSpecifiersOnLocalEventType = String.raw `${ofLocalPropToRemoteSpecifiers}${onLocalEventType}`;
 const toRemoteSpecifiersOnLocalEventType = String.raw `${toRemoteSpecifiers}${onLocalEventType}`;
 
+/**
+ * @type {[string, string]}
+ */
+const rssTors = ['dependencyPart', 'remoteSpecifier'];
 
 /**
  * @type {EMC<any, BAP>}
@@ -19,34 +23,34 @@ export const emc = {
     base: 'be-elevating',
     branches: ['', 'pass-srv'],
     map: {
-        // '0.0': {
-        //     instanceOf: 'Object$entences',
-        //     objValMapsTo: '.',
-        //     regExpExts: {
-        //         parsedStatements: [
-        //             {
-        //                 regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
-        //                 defaultVals: {},
-        //                 dssKeys,
-        //             },
-        //             {
-        //                 regExp: toRemoteSpecifiersOnLocalEventType,
-        //                 defaultVals: {},
-        //                 dssKeys,
-        //             },
-        //             {
-        //                 regExp: ofLocalPropToRemoteSpecifiers,
-        //                 defaultVals: {},
-        //                 dssKeys,
-        //             },
-        //             {
-        //                 regExp: toRemoteSpecifiers,
-        //                 defaultVals: {},
-        //                 dssKeys,
-        //             }
-        //         ]
-        //     },
-        // },
+        '0.0': {
+            instanceOf: 'Object$entences',
+            objValMapsTo: '.',
+            regExpExts: {
+                bindingRules: [
+                    {
+                        regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
+                        defaultVals: {},
+                        dssKeys: [rssTors],
+                    },
+                    {
+                        regExp: toRemoteSpecifiersOnLocalEventType,
+                        defaultVals: {},
+                        dssKeys: [rssTors],
+                    },
+                    {
+                        regExp: ofLocalPropToRemoteSpecifiers,
+                        defaultVals: {},
+                        dssKeys: [rssTors],
+                    },
+                    {
+                        regExp: toRemoteSpecifiers,
+                        defaultVals: {},
+                        dssKeys: [rssTors],
+                    }
+                ]
+            },
+        },
         '1.0': {
             instanceOf: 'Boolean',
             mapsTo: 'passSRV'

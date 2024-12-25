@@ -25,7 +25,7 @@ What this does:
 
 This is shorthand for:
 
-## Example 1b - specifying target property of host
+## Example 1b - specifying target property of host [TODO]
 
 ```html
 <mood-stone>
@@ -38,7 +38,7 @@ The name "be-elevating" is a bit long for something that will likely be sprinkle
 
 That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating" in the examples that follow.
 
-## Example 1c - specifying local property to pass, and target property
+## Example 1c - specifying local property to pass, and target property [TODO]
 
 ```html
 <mood-stone>
@@ -52,7 +52,7 @@ That is the canonical name.  The developer can, in less formal settings, especia
 
 The default event, as before, is "input".  But we can specify any other event:
 
-## Example 1d - specifying the local property to pass and the target property and the local event
+## Example 1d - specifying the local property to pass and the target property and the local event [TODO]
 
 ```html
 <mood-stone>
@@ -63,7 +63,7 @@ The default event, as before, is "input".  But we can specify any other event:
 </mood-stone>
 ```
 
-## Example 1e - specify the target property and local event
+## Example 1e - specify the target property and local event [TODO]
 
 ```html
 <mood-stone>
@@ -78,7 +78,7 @@ Since there is no "of" clause, it will by default elevate the "value" of the inp
 
 Same thing is done for button element, which also supports the value attribute/property:
 
-## Example 1f -  Specify target property on button element
+## Example 1f -  Specify target property on button element [TODO]
 
 ```html
 <mood-stone>

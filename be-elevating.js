@@ -23,8 +23,10 @@ class BeElevating extends BE {
         propInfo: {
             ...propInfo,
             bindings: {},
+            bindingRules: {},
         },
         compacts:{
+            when_bindingRules_changes_invoke_getBindings: 0,
             when_bindings_changes_invoke_hydrate: 0,
         },
         actions: {
@@ -88,6 +90,46 @@ class BeElevating extends BE {
         nudge(enhancedElement);
         return /** type {PAP} */ ({
             resolved: true
+        });
+    }
+
+    /**
+     * 
+     * @param {BAP} self 
+     * @returns 
+     */
+    async getBindings(self){
+        const {bindingRules, enhancedElement} = self;
+        const bindings = /** @type {Array<Binding>} */ [];
+        for (const bindingRule of bindingRules) {
+            let {remoteSpecifier} = bindingRule;
+            let remoteProp;
+            let remoteEvtName;
+            //copied from be-bound
+            if (remoteSpecifier === undefined) {
+                remoteProp = stdProp(enhancedElement);
+                remoteSpecifier = await parse(`/${remoteProp}`);
+            }else{
+                const { s, prop } = remoteSpecifier;
+                switch (s) {
+                    case '/':
+                    case '-':
+                        remoteProp = prop;
+                        break;
+                }
+                remoteEvtName = remoteSpecifier.evt;
+            }
+            const remoteEl = await find(enhancedElement, remoteSpecifier);
+            if(remoteEl === null) throw 404;
+            const remoteShareObj = await ASMR.getSO(remoteEl, {
+                valueProp: remoteProp
+            });
+
+            const localAbsObj = await ASMR.getAO(enhancedElement);
+            bindings.push({remoteShareObj, localAbsObj});
+        }
+        return /** type {PAP} */ ({
+            bindings
         });
     }
 }
