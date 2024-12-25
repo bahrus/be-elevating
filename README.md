@@ -38,8 +38,7 @@ The name "be-elevating" is a bit long for something that will likely be sprinkle
 
 That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating" in the examples that follow.
 
-## Example 1c - specifying local property to pass, and target property [TODO]
-
+## Example 1c - specifying local property to pass, and target property
 ```html
 <mood-stone>
     #shadow
