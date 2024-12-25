@@ -19,34 +19,34 @@ export const emc = {
     base: 'be-elevating',
     branches: ['', 'pass-srv'],
     map: {
-        '0.0': {
-            instanceOf: 'Object$entences',
-            objValMapsTo: '.',
-            regExpExts: {
-                parsedStatements: [
-                    {
-                        regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
-                        defaultVals: {},
-                        dssKeys,
-                    },
-                    {
-                        regExp: toRemoteSpecifiersOnLocalEventType,
-                        defaultVals: {},
-                        dssKeys,
-                    },
-                    {
-                        regExp: ofLocalPropToRemoteSpecifiers,
-                        defaultVals: {},
-                        dssKeys,
-                    },
-                    {
-                        regExp: toRemoteSpecifiers,
-                        defaultVals: {},
-                        dssKeys,
-                    }
-                ]
-            },
-        },
+        // '0.0': {
+        //     instanceOf: 'Object$entences',
+        //     objValMapsTo: '.',
+        //     regExpExts: {
+        //         parsedStatements: [
+        //             {
+        //                 regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
+        //                 defaultVals: {},
+        //                 dssKeys,
+        //             },
+        //             {
+        //                 regExp: toRemoteSpecifiersOnLocalEventType,
+        //                 defaultVals: {},
+        //                 dssKeys,
+        //             },
+        //             {
+        //                 regExp: ofLocalPropToRemoteSpecifiers,
+        //                 defaultVals: {},
+        //                 dssKeys,
+        //             },
+        //             {
+        //                 regExp: toRemoteSpecifiers,
+        //                 defaultVals: {},
+        //                 dssKeys,
+        //             }
+        //         ]
+        //     },
+        // },
         '1.0': {
             instanceOf: 'Boolean',
             mapsTo: 'passSRV'
@@ -54,7 +54,7 @@ export const emc = {
     },
     enhPropKey: 'beElevating',
     importEnh: async () => {
-        const { BeElevating } = await import('./be-elevating.js');
+        const { BeElevating } = await import('./legacy/be-elevating.js');
         return BeElevating;
     }
 };

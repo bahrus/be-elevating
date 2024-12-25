@@ -1,106 +1,41 @@
 // @ts-check
-import { propInfo, resolved, rejected } from 'be-enhanced/cc.js';
+import { config as beCnfg } from 'be-enhanced/config.js';
 import { BE } from 'be-enhanced/BE.js';
-import { dispatchEvent as de } from 'trans-render/positractions/dispatchEvent.js';
-
-/** @import {Actions, PAP, AP, BAP, ObservingParameters} from './ts-refs/be-modding/types.d.ts' */
+import { stdProp } from 'trans-render/asmr/stdProp.js';
+import { parse } from 'trans-render/dss/parse.js';
+import { ASMR } from 'trans-render/asmr/asmr.js';
+import { find } from 'trans-render/dss/find.js';
+/** @import {BEConfig, IEnhancement, BEAllProps} from './ts-refs/be-enhanced/types.d.ts' */
+/** @import {Actions, PAP, AllProps, AP, BAP, Binding} from './ts-refs/be-elevating/types.d.ts' */;
+/** @import {AbsorbingObject, SharingObject} from './ts-refs/trans-render/asmr/types' */
 
 /**
  * @implements {Actions}
+ * 
  */
 class BeElevating extends BE {
-    de = de;
-    static config = {
-        propInfo: {
-            ...propInfo,
-            parsedStatements: {},
-            rawStatements: {},
-            passSRV: {},
-        },
-        actions: {
-            noAttrs: {
-                ifNoneOf: ['parsedStatements']
-            },
-            hydrate: {
-                ifAllOf: ['parsedStatements']
-            },
-            onRawStatements: {
-                ifAllOf: ['rawStatements']
-            }
-        },
-        positractions: [rejected, resolved]
-    };
+    /**
+     * 
+     * @param {BAP} self 
+     * @returns 
+     */
     async noAttrs(self) {
+        //copied from be-bound
         const { enhancedElement } = self;
-        const { getRemoteProp } = await import('be-linked/defaults.js');
-        const specifier = {
-            s: '/',
-            elS: '*',
-            dss: '^',
-            scopeS: '[itemscope]',
-            rec: true,
-            rnf: true,
-            prop: getRemoteProp(enhancedElement),
-            host: true
-        };
-        const parsedStatement = {
-            remoteSpecifiers: [specifier]
-        };
-        return {
-            parsedStatements: [parsedStatement]
-        };
-    }
-    #abortControllers = [];
-    async hydrate(self) {
-        const { parsedStatements, enhancedElement, passSRV } = self;
-        const { nudge } = await import('trans-render/lib/nudge.js');
-        for (const parsedStatement of parsedStatements) {
-            let { localEventType, localPropToElevate } = parsedStatement;
-            let et = enhancedElement;
-            if (localEventType === undefined || localPropToElevate === undefined) {
-                const { getLocalSignal } = await import('be-linked/defaults.js');
-                const ls = await getLocalSignal(enhancedElement);
-                const { signal, prop, type, subProp } = ls;
-                if (localEventType === undefined)
-                    localEventType = type;
-                if (localPropToElevate === undefined)
-                    localPropToElevate = prop;
-            }
-            const ac = new AbortController();
-            this.#abortControllers.push(ac);
-            et.addEventListener(localEventType, e => {
-                this.#passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate);
-            }, { signal: ac.signal });
-            if (passSRV) {
-                this.#passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate);
-            }
-        }
-        nudge(enhancedElement);
-        return {
-            resolved: true
-        };
-    }
-    async #passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate) {
-        const { remoteSpecifiers } = parsedStatement;
-        const { find } = await import('trans-render/dss/find.js');
-        for (const remoteSpecifier of remoteSpecifiers) {
-            const remoteET = await find(enhancedElement, remoteSpecifier);
-            let val;
-            //TODO:  maybe be-hive should have a special way of mapping this?
-            if (localPropToElevate[0] === ':') {
-                const { getVal } = await import('trans-render/lib/getVal.js');
-                val = await getVal({ host: enhancedElement }, localPropToElevate.replaceAll(':', '.'));
-            }
-            else {
-                val = enhancedElement[localPropToElevate];
-            }
-            const { prop } = remoteSpecifier;
-            remoteET[prop] = val;
-        }
-    }
-    onRawStatements(self) {
-        const { rawStatements } = self;
-        console.error(400, rawStatements);
+        const remoteProp = stdProp(enhancedElement);
+        const remoteSpecifier = await parse(`/${remoteProp}`);
+        const remoteEl = await find(enhancedElement, remoteSpecifier);
+        if(remoteEl === null) throw 404;
+        const remoteShareObj = await ASMR.getSO(remoteEl, {
+            valueProp: remoteProp
+        });
+        const localAbsObj = await ASMR.getAO(enhancedElement);
+        
+        return /** type {PAP} */ ({
+            bindings: [
+                {remoteShareObj, localAbsObj}
+            ]
+        });
     }
 }
 

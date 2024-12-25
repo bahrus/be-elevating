@@ -1,122 +1,108 @@
-import { BE, propDefaults, propInfo } from 'be-enhanced/BE.js';
-import { XE } from 'xtal-element/XE.js';
-import { nudge } from 'trans-render/lib/nudge.js';
-import { getRemoteProp, getLocalSignal } from 'be-linked/defaults.js';
-export class BeElevating extends BE {
-    #abortControllers = [];
-    detach() {
-        for (const ac of this.#abortControllers) {
-            ac.abort();
-        }
-    }
-    static get beConfig() {
-        return {
-            parse: true,
-            parseAndCamelize: true,
-            isParsedProp: 'isParsed'
-        };
-    }
-    async noAttrs(self) {
-        const { enhancedElement } = self;
-        const elevateRule = {
-            remoteProp: getRemoteProp(enhancedElement),
-            remoteType: '/'
-        };
-        return {
-            elevateRules: [elevateRule]
-        };
-    }
-    async onCamelized(self) {
-        const { of, Of, To, to } = self;
-        let ofRules = [];
-        if ((of || Of) !== undefined) {
-            const { prsOf } = await import('./prsOf.js');
-            ofRules = prsOf(self);
-        }
-        let toRules = [];
-        if ((to || To) !== undefined) {
-            const { prsTo } = await import('./prsTo.js');
-            toRules = prsTo(self);
-        }
-        const elevateRules = [...ofRules, ...toRules];
-        return {
-            elevateRules
-        };
-    }
-    async hydrate(self) {
-        const { enhancedElement, elevateRules } = self;
-        for (const rule of elevateRules) {
-            const { localEvent } = rule;
-            let signalInfo;
-            if (localEvent) {
-                signalInfo = {
-                    signal: enhancedElement,
-                    type: localEvent,
-                };
-            }
-            else {
-                signalInfo = await getLocalSignal(enhancedElement);
-            }
-            const { signal, type } = signalInfo;
-            const ab = new AbortController();
-            this.#abortControllers.push(ab);
-            signal.addEventListener(type, async (e) => {
-                let { remoteRef, remoteProp, localProp } = rule;
-                let ref = remoteRef?.deref();
-                if (ref === undefined) {
-                    const { remoteType } = rule;
-                    const { getRemoteEl } = await import('be-linked/getRemoteEl.js');
-                    ref = await getRemoteEl(enhancedElement, remoteType, remoteProp);
-                    rule.remoteRef = new WeakRef(ref);
-                }
-                const { lispToCamel } = await import('trans-render/lib/lispToCamel.js');
-                let val;
-                if (localProp === undefined) {
-                    const { getSignalVal } = await import('be-linked/getSignalVal.js');
-                    val = getSignalVal(enhancedElement);
-                }
-                else {
-                    if (localProp[0] === '.') {
-                        const { getVal } = await import('trans-render/lib/getVal.js');
-                        val = await getVal({ host: enhancedElement }, localProp);
-                    }
-                    else {
-                        val = enhancedElement[localProp];
-                    }
-                }
-                const newRemotePropName = lispToCamel(remoteProp);
-                ref[newRemotePropName] = val;
-            }, { signal: ab.signal });
-        }
-        nudge(enhancedElement);
-        return {
-            resolved: true,
-        };
-    }
-}
-export const strType = String.raw `\/|\-`;
-export const tagName = 'be-elevating';
-const xe = new XE({
-    config: {
-        tagName,
-        isEnh: true,
-        propDefaults: {
-            ...propDefaults,
-        },
+// @ts-check
+import { propInfo, resolved, rejected } from 'be-enhanced/cc.js';
+import { BE } from 'be-enhanced/BE.js';
+import { dispatchEvent as de } from 'trans-render/positractions/dispatchEvent.js';
+
+/** @import {Actions, PAP, AP, BAP, ObservingParameters} from '../ts-refs/be-modding/types' */
+
+/**
+ * @implements {Actions}
+ */
+class BeElevating extends BE {
+    de = de;
+    static config = {
         propInfo: {
-            ...propInfo
+            ...propInfo,
+            parsedStatements: {},
+            rawStatements: {},
+            passSRV: {},
         },
         actions: {
             noAttrs: {
-                ifAllOf: ['isParsed'],
-                ifNoneOf: ['of', 'Of', 'to', 'To']
+                ifNoneOf: ['parsedStatements']
             },
-            onCamelized: {
-                ifAllOf: ['isParsed'],
-                ifAtLeastOneOf: ['of', 'Of', 'to', 'To']
+            hydrate: {
+                ifAllOf: ['parsedStatements']
             },
-            hydrate: 'elevateRules'
+            onRawStatements: {
+                ifAllOf: ['rawStatements']
+            }
+        },
+        positractions: [rejected, resolved]
+    };
+    async noAttrs(self) {
+        const { enhancedElement } = self;
+        const { getRemoteProp } = await import('be-linked/defaults.js');
+        const specifier = {
+            s: '/',
+            elS: '*',
+            dss: '^',
+            scopeS: '[itemscope]',
+            rec: true,
+            rnf: true,
+            prop: getRemoteProp(enhancedElement),
+            host: true
+        };
+        const parsedStatement = {
+            remoteSpecifiers: [specifier]
+        };
+        return {
+            parsedStatements: [parsedStatement]
+        };
+    }
+    #abortControllers = [];
+    async hydrate(self) {
+        const { parsedStatements, enhancedElement, passSRV } = self;
+        const { nudge } = await import('trans-render/lib/nudge.js');
+        for (const parsedStatement of parsedStatements) {
+            let { localEventType, localPropToElevate } = parsedStatement;
+            let et = enhancedElement;
+            if (localEventType === undefined || localPropToElevate === undefined) {
+                const { getLocalSignal } = await import('be-linked/defaults.js');
+                const ls = await getLocalSignal(enhancedElement);
+                const { signal, prop, type, subProp } = ls;
+                if (localEventType === undefined)
+                    localEventType = type;
+                if (localPropToElevate === undefined)
+                    localPropToElevate = prop;
+            }
+            const ac = new AbortController();
+            this.#abortControllers.push(ac);
+            et.addEventListener(localEventType, e => {
+                this.#passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate);
+            }, { signal: ac.signal });
+            if (passSRV) {
+                this.#passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate);
+            }
         }
-    },
-    superclass: BeElevating
-});
+        nudge(enhancedElement);
+        return {
+            resolved: true
+        };
+    }
+    async #passLocalValueToRemoteTarget(parsedStatement, enhancedElement, localPropToElevate) {
+        const { remoteSpecifiers } = parsedStatement;
+        const { find } = await import('trans-render/dss/find.js');
+        for (const remoteSpecifier of remoteSpecifiers) {
+            const remoteET = await find(enhancedElement, remoteSpecifier);
+            let val;
+            //TODO:  maybe be-hive should have a special way of mapping this?
+            if (localPropToElevate[0] === ':') {
+                const { getVal } = await import('trans-render/lib/getVal.js');
+                val = await getVal({ host: enhancedElement }, localPropToElevate.replaceAll(':', '.'));
+            }
+            else {
+                val = enhancedElement[localPropToElevate];
+            }
+            const { prop } = remoteSpecifier;
+            remoteET[prop] = val;
+        }
+    }
+    onRawStatements(self) {
+        const { rawStatements } = self;
+        console.error(400, rawStatements);
+    }
+}
+
+await BeElevating.bootUp();
+export { BeElevating };
