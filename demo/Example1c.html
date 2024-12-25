@@ -12,12 +12,12 @@
 </head>
 <body>
     <mood-stone itemscope>
-        <div></div>
-        <input type=checkbox disabled 🛗="to isHappy">
+        <div itemprop=songLyricOfTheDay></div>
+        <input  disabled 🛗="to isHappy">
         <xtal-element
-            prop-defaults='{"isHappy": false}'
+            prop-ino='{"songLyricOfTheDay": {}}'
             xform='{
-                "div": "isHappy"
+                "| songLyricOfTheDay": 0
             }'
         ></xtal-element>
     </mood-stone>

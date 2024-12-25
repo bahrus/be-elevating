@@ -45,7 +45,7 @@ That is the canonical name.  The developer can, in less formal settings, especia
     #shadow
         <input disabled
             data-msg='Hello darkness my old friend'  
-            🛗='of :dataset:msg to songLyricOfTheDay.'
+            🛗='?.dataset?.msg to songLyricOfTheDay.'
         >
 </mood-stone>
 ```
