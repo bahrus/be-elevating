@@ -1,11 +1,18 @@
-import { config as beCnfg } from 'be-enhanced/config.js';
+// @ts-check
+import { propInfo, resolved, rejected } from 'be-enhanced/cc.js';
 import { BE } from 'be-enhanced/BE.js';
 import { dispatchEvent as de } from 'trans-render/positractions/dispatchEvent.js';
+
+/** @import {Actions, PAP, AP, BAP, ObservingParameters} from './ts-refs/be-modding/types.d.ts' */
+
+/**
+ * @implements {Actions}
+ */
 class BeElevating extends BE {
     de = de;
     static config = {
         propInfo: {
-            ...beCnfg.propInfo,
+            ...propInfo,
             parsedStatements: {},
             rawStatements: {},
             passSRV: {},
@@ -21,7 +28,7 @@ class BeElevating extends BE {
                 ifAllOf: ['rawStatements']
             }
         },
-        positractions: [...beCnfg.positractions]
+        positractions: [rejected, resolved]
     };
     async noAttrs(self) {
         const { enhancedElement } = self;
@@ -96,5 +103,6 @@ class BeElevating extends BE {
         console.error(400, rawStatements);
     }
 }
+
 await BeElevating.bootUp();
 export { BeElevating };
