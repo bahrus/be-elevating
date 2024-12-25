@@ -1,4 +1,4 @@
-# be-elevating (🛗) [TODO]
+# be-elevating (🛗) [WIP]
 
 Elevate local property value to host or upstream peer element when user initiates event.
 

@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "ssi-server": "0.0.1",
-    "@playwright/test": "1.49.1"
+    "@playwright/test": "1.49.1",
+    "xtal-element": "0.0.624"
   },
   "author": "Bruce B. Anderson <anderson.bruce.b@gmail.com>",
   "license": "MIT"
