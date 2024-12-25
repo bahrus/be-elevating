@@ -25,7 +25,7 @@ What this does:
 
 This is shorthand for:
 
-## Example 1b - specifying target property of host [TODO]
+## Example 1b - specifying target property of host
 
 ```html
 <mood-stone>
