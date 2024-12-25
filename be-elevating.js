@@ -24,6 +24,9 @@ class BeElevating extends BE {
             ...propInfo,
             bindings: {},
         },
+        compacts:{
+            when_bindings_changes_invoke_hydrate: 0,
+        },
         actions: {
             noAttrs: {
                 ifNoneOf: ['bindingRules'],
@@ -56,12 +59,31 @@ class BeElevating extends BE {
             ]
         });
     }
+
+    /**
+     * 
+     * @param {AbsorbingObject} localAbsObj 
+     * @param {SharingObject} remoteShareObj 
+     */
+    addLocalAbs(localAbsObj, remoteShareObj){
+        localAbsObj.addEventListener('.', async (e) => {
+            const val = await localAbsObj.getValue();
+            remoteShareObj.setValue(val);
+        });
+    }
+
+
     /**
      * 
      * @param {BAP} self 
      * @returns 
      */
     async hydrate(self){
+        const { bindings, enhancedElement } = self;
+        for (const binding of bindings) {
+            const {remoteShareObj, localAbsObj} = binding;
+            this.addLocalAbs(localAbsObj, remoteShareObj);
+        }
         const { nudge } = await import('trans-render/lib/nudge.js');
         return /** type {PAP} */ ({
             resolved: true

@@ -54,7 +54,7 @@ export const emc = {
     },
     enhPropKey: 'beElevating',
     importEnh: async () => {
-        const { BeElevating } = await import('./legacy/be-elevating.js');
+        const { BeElevating } = await import('./be-elevating.js');
         return BeElevating;
     }
 };
