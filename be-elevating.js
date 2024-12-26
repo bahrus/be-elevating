@@ -25,6 +25,7 @@ class BeElevating extends BE {
             bindings: {},
             bindingRules: {},
             rawStatements: {},
+            passSRV: {def: false}
         },
         compacts:{
             when_bindingRules_changes_invoke_getBindings: 0,
@@ -68,12 +69,17 @@ class BeElevating extends BE {
      * 
      * @param {AbsorbingObject} localAbsObj 
      * @param {SharingObject} remoteShareObj 
+     * @param {boolean} passSRV
      */
-    addLocalAbs(localAbsObj, remoteShareObj){
+    async addLocalAbs(localAbsObj, remoteShareObj, passSRV){
         localAbsObj.addEventListener('.', async (e) => {
             const val = await localAbsObj.getValue();
             remoteShareObj.setValue(val);
         });
+        if(passSRV){
+            const val = await localAbsObj.getValue();
+            remoteShareObj.setValue(val);
+        }
     }
 
 
@@ -83,10 +89,10 @@ class BeElevating extends BE {
      * @returns 
      */
     async hydrate(self){
-        const { bindings, enhancedElement } = self;
+        const { bindings, enhancedElement, passSRV } = self;
         for (const binding of bindings) {
             const {remoteShareObj, localAbsObj} = binding;
-            this.addLocalAbs(localAbsObj, remoteShareObj);
+            await this.addLocalAbs(localAbsObj, remoteShareObj, passSRV);
         }
         const { nudge } = await import('trans-render/lib/nudge.js');
         nudge(enhancedElement);
