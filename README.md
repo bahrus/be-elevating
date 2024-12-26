@@ -86,7 +86,7 @@ This passes the "value" property of the button to "songLyricOfTheDay" property o
 </mood-stone>
 ```
 
-## Example 1f -- specifying the event
+## Example 1f -- specifying the event [TODO]
 
 ```html
 <mood-stone>
@@ -102,19 +102,6 @@ Since there is no "of" clause, it will by default elevate the "value" of the inp
 
 Same thing is done for button element, which also supports the value attribute/property:
 
-## Example 1f -  Specify target property on button element [TODO]
-
-```html
-<mood-stone>
-    #shadow
-        <button disabled
-            value='Hello darkness my old friend'  
-            🛗='to songLyricOfTheDay.'
-        >Sounds of Silence</button>
-</mood-stone>
-```
-
-The default event type for buttons is "click".
 
 # Part II Passing to (upstream) peer elements.
 
