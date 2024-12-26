@@ -8,7 +8,7 @@ const dependencyPart = String.raw `(?<dependencyPart>.*)`;
 const toRemoteSpecifiers = String.raw `^(t|T)o ${dependencyPart}`;
 const localPropToRemoteSpecifiers = String.raw `^(?<localPropToElevate>.*) to ${dependencyPart}`;
 const onLocalEventType = String.raw ` on (?<localEventType>.*)`;
-const ofLocalPropToRemoteSpecifiersOnLocalEventType = String.raw `${localPropToRemoteSpecifiers}${onLocalEventType}`;
+const localPropToRemoteSpecifiersOnLocalEventType = String.raw `${localPropToRemoteSpecifiers}${onLocalEventType}`;
 const toRemoteSpecifiersOnLocalEventType = String.raw `${toRemoteSpecifiers}${onLocalEventType}`;
 
 /**
@@ -28,11 +28,7 @@ export const emc = {
             objValMapsTo: '.',
             regExpExts: {
                 bindingRules: [
-                    // {
-                    //     regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
-                    //     defaultVals: {},
-                    //     dssKeys: [rssTors],
-                    // },
+
                     {
                         regExp: toRemoteSpecifiersOnLocalEventType,
                         defaultVals: {},
@@ -40,6 +36,11 @@ export const emc = {
                     },
                     {
                         regExp: toRemoteSpecifiers,
+                        defaultVals: {},
+                        dssKeys: [rssTors],
+                    },
+                    {
+                        regExp: localPropToRemoteSpecifiersOnLocalEventType,
                         defaultVals: {},
                         dssKeys: [rssTors],
                     },

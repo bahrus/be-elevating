@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- #include virtual="/imports.html" -->
+    <script type=module>
+        import 'xtal-element/index.js';
+        import '/🛗.js';
+    </script>
+</head>
+<body>
+    <mood-stone itemscope>
+        <div itemprop=songLyricOfTheDay></div>
+        <button 
+            data-msg="Hello darkness my old friend"  
+            disabled 🛗="?.dataset?.msg to songLyricOfTheDay on mouseover">
+            Select Me
+        </button>
+        <xtal-element
+            prop-defaults='{"songLyricOfTheDay": ""}'
+            xform='{
+                "| songLyricOfTheDay": 0
+            }'
+        ></xtal-element>
+    </mood-stone>
+</body>
+</html>
