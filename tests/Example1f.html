@@ -12,22 +12,25 @@
 </head>
 <body>
     <mood-stone itemscope>
-        <div id=div></div>
-        <input id=input name=isHappy type=checkbox disabled 🛗>
+        <div id=div itemprop=songLyricOfTheDay></div>
+        <button id=button
+            data-msg="Hello darkness my old friend"  
+            disabled 🛗="?.dataset?.msg to songLyricOfTheDay on mouseover">
+            Select Me
+        </button>
         <xtal-element
-            prop-defaults='{"isHappy": false}'
+            prop-defaults='{"songLyricOfTheDay": ""}'
             xform='{
-                "div": "isHappy"
+                "| songLyricOfTheDay": 0
             }'
         ></xtal-element>
     </mood-stone>
     <div id=target></div>
     <script>
         function runTest(){
-            input.checked = true;
-            input.dispatchEvent(new Event('input'));
+            button.dispatchEvent(new MouseEvent('mouseover'));
             setTimeout(() => {
-                if(div.textContent === 'true'){
+                if(div.textContent === 'Hello darkness my old friend'){
                     target.setAttribute('mark', 'good');
                 }
             }, 500);
@@ -35,7 +38,7 @@
         }
         setTimeout(() => {
             runTest();
-        }, 1500);
+        }, 2000);
     </script>
 </body>
 </html>
