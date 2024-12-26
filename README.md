@@ -72,40 +72,28 @@ That is the canonical name.  The developer can, in less formal settings, especia
 </mood-stone>
 ```
 
-This passes the vale of the button to "songLyricOfTheDay" property of mood-stone.
+This passes the "value" property of the button to "songLyricOfTheDay" property of mood-stone.
 
-## Example 1e - specifying local property to pass, and target property [TODO
-]
+## Example 1e - specifying local property to pass with nested path, and target property [TODO]
+
 ```html
 <mood-stone>
     #shadow
-        <input disabled
+        <button disabled
             data-msg='Hello darkness my old friend'  
             🛗='?.dataset?.msg to songLyricOfTheDay.'
         >
 </mood-stone>
 ```
 
-The default event, as before, is "input".  But we can specify any other event:
-
-## Example 1d - specifying the local property to pass and the target property and the local event [TODO]
+## Example 1f -- specifying the event [TODO]
 
 ```html
 <mood-stone>
     #shadow
-        <input data-msg='Hello darkness my old friend' disabled  
-            🛗='of :dataset:msg to songLyricOfTheDay on change.'
-        >
-</mood-stone>
-```
-
-## Example 1e - specify the target property and local event [TODO]
-
-```html
-<mood-stone>
-    #shadow
-        <input disabled  
-            🛗='to songLyricOfTheDay on change.'
+        <button disabled
+            data-msg='Hello darkness my old friend'  
+            🛗='?.dataset?.msg to songLyricOfTheDay on mouseover.'
         >
 </mood-stone>
 ```
