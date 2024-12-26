@@ -104,7 +104,7 @@ class BeElevating extends BE {
         const {bindingRules, enhancedElement} = self;
         const bindings = /** @type {Array<Binding>} */ [];
         for (const bindingRule of bindingRules) {
-            let {remoteSpecifier} = bindingRule;
+            let {remoteSpecifier, localPropToElevate} = bindingRule;
             let remoteProp;
             let remoteEvtName;
             //copied from be-bound
@@ -126,8 +126,8 @@ class BeElevating extends BE {
             const remoteShareObj = await ASMR.getSO(remoteEl, {
                 valueProp: remoteProp
             });
-
-            const localAbsObj = await ASMR.getAO(enhancedElement);
+            //console.log({localPropToElevate});
+            const localAbsObj = await ASMR.getAO(enhancedElement, {propToAbsorb: localPropToElevate});
             bindings.push({remoteShareObj, localAbsObj});
         }
         return /** type {PAP} */ ({

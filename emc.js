@@ -6,9 +6,9 @@ import { BeHive, seed, MountObserver } from 'be-hive/be-hive.js';
 const dssKeys = [['dependencyPart', 'remoteSpecifiers[]']];
 const dependencyPart = String.raw `(?<dependencyPart>.*)`;
 const toRemoteSpecifiers = String.raw `^(t|T)o ${dependencyPart}`;
-const ofLocalPropToRemoteSpecifiers = String.raw `^(o|O)f (?<localPropToElevate>[\w\:\$\+]+) to ${dependencyPart}`;
+const localPropToRemoteSpecifiers = String.raw `^(?<localPropToElevate>.*) to ${dependencyPart}`;
 const onLocalEventType = String.raw ` on (?<localEventType>.*)`;
-const ofLocalPropToRemoteSpecifiersOnLocalEventType = String.raw `${ofLocalPropToRemoteSpecifiers}${onLocalEventType}`;
+const ofLocalPropToRemoteSpecifiersOnLocalEventType = String.raw `${localPropToRemoteSpecifiers}${onLocalEventType}`;
 const toRemoteSpecifiersOnLocalEventType = String.raw `${toRemoteSpecifiers}${onLocalEventType}`;
 
 /**
@@ -28,18 +28,13 @@ export const emc = {
             objValMapsTo: '.',
             regExpExts: {
                 bindingRules: [
-                    {
-                        regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
-                        defaultVals: {},
-                        dssKeys: [rssTors],
-                    },
+                    // {
+                    //     regExp: ofLocalPropToRemoteSpecifiersOnLocalEventType,
+                    //     defaultVals: {},
+                    //     dssKeys: [rssTors],
+                    // },
                     {
                         regExp: toRemoteSpecifiersOnLocalEventType,
-                        defaultVals: {},
-                        dssKeys: [rssTors],
-                    },
-                    {
-                        regExp: ofLocalPropToRemoteSpecifiers,
                         defaultVals: {},
                         dssKeys: [rssTors],
                     },
@@ -47,7 +42,12 @@ export const emc = {
                         regExp: toRemoteSpecifiers,
                         defaultVals: {},
                         dssKeys: [rssTors],
-                    }
+                    },
+                    {
+                        regExp: localPropToRemoteSpecifiers,
+                        defaultVals: {},
+                        dssKeys: [rssTors],
+                    },
                 ]
             },
         },

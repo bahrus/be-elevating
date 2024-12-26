@@ -86,7 +86,7 @@ This passes the "value" property of the button to "songLyricOfTheDay" property o
 </mood-stone>
 ```
 
-## Example 1f -- specifying the event [TODO]
+## Example 1f -- specifying the event
 
 ```html
 <mood-stone>
