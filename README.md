@@ -38,7 +38,44 @@ The name "be-elevating" is a bit long for something that will likely be sprinkle
 
 That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating" in the examples that follow.
 
-## Example 1c - specifying local property to pass, and target property
+## Example 1c -- use of 🛗
+
+```html
+<mood-stone itemscope>
+    <div itemprop=songLyricOfTheDay></div>
+    <input  disabled 🛗="to songLyricOfTheDay">
+    <xtal-element
+        prop-defaults='{"songLyricOfTheDay": ""}'
+        xform='{
+            "| songLyricOfTheDay": 0
+        }'
+    ></xtal-element>
+</mood-stone>
+```
+
+## Example 1d -- Passing local value
+
+```html
+<mood-stone itemscope>
+    <div itemprop=songLyricOfTheDay></div>
+    <button 
+        value="Hello darkness my old friend"  
+        disabled 🛗="to songLyricOfTheDay">
+        Select Me
+    </button>
+    <xtal-element
+        prop-defaults='{"songLyricOfTheDay": ""}'
+        xform='{
+            "| songLyricOfTheDay": 0
+        }'
+    ></xtal-element>
+</mood-stone>
+```
+
+This passes the vale of the button to "songLyricOfTheDay" property of mood-stone.
+
+## Example 1e - specifying local property to pass, and target property [TODO
+]
 ```html
 <mood-stone>
     #shadow
