@@ -163,7 +163,7 @@ If we want the (server-rendered) initial value of the input element to get passe
 </mood-stone>
 ```
 
-## Example 2d [TODO]
+## Example 2d
 
 ```html
 <mood-stone>
