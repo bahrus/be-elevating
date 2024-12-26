@@ -137,7 +137,7 @@ whenever the input element emits event "input".
 
 The search for an element with attribute is done via the nearest element adorned with the "itemscope" attribute.  If no such closest container is found, it searches within the root node.  If the web component is not using ShadowDOM, that can be quite dangerous, as the root node will actually be the top level document object of the page.
 
-## Example 2b - Set initial value from server rendered content
+## Example 2b - Set initial value from server rendered content [TODO]
 
 If we want the (server-rendered) initial value of the input element to get passed straight-away to the *soul-searcher* element, we can do so:
 
@@ -152,7 +152,7 @@ If we want the (server-rendered) initial value of the input element to get passe
 
 "srv" stands for "server-rendered-value" (and also works with server-generated values).
 
-## Example 2c
+## Example 2c [TODO]
 
 ```html
 <mood-stone>
@@ -163,7 +163,7 @@ If we want the (server-rendered) initial value of the input element to get passe
 </mood-stone>
 ```
 
-## Example 2d
+## Example 2d [TODO]
 
 ```html
 <mood-stone>
