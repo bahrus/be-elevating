@@ -1,4 +1,4 @@
-# be-elevating (🛗) [WIP]
+# be-elevating (🛗)
 
 Elevate local property value to host or upstream peer element when user initiates event.
 
@@ -36,7 +36,7 @@ This is shorthand for:
 
 The name "be-elevating" is a bit long for something that will likely be sprinkled throughout the HTML/template.
 
-That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating" in the examples that follow.
+That is the canonical name.  The developer can, in less formal settings, especially where the be-elevating enhancement/behavior is widely used, and conflicts with other libraries be avoided, define a "nickname" more to their own liking.  This package does in fact provide a sample of how that is done, aliasing be-elevating with the elevator emoji:  🛗.  That is what we will use in the following examples.  Please make the mental map from 🛗 to "be-elevating" in the examples that follow.
 
 ## Example 1c -- use of 🛗
 
@@ -176,15 +176,16 @@ If we want the (server-rendered) initial value of the input element to get passe
 
 ## Viewing Demos Locally
 
-Any web server that can serve static files will do, but...
+Any web server that serves static files with server-side includes will do but...
 
 1.  Install git.
 2.  Fork/clone this repo.
-3.  Install node.js.
-4.  Open command window to folder where you cloned this repo.
-5.  > npm install
-6.  > npm run serve
-7.  Open http://localhost:8000/demo/ in a modern browser.
+3.  Install node.
+4.  Install Python 3 or later.
+5.  Open command window to folder where you cloned this repo.
+6.  > npm install
+7.  > npm run serve
+8.  Open http://localhost:8000/demo in a modern browser.
 
 ## Running Tests
 
