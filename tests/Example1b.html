@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- #include virtual="/imports.html" -->
+    <script type=module>
+        import 'xtal-element/index.js';
+        import '/🛗.js';
+    </script>
+</head>
+<body>
+    <mood-stone itemscope>
+        <div></div>
+        <input type=checkbox disabled 🛗="to isHappy">
+        <xtal-element
+            prop-defaults='{"isHappy": false}'
+            xform='{
+                "div": "isHappy"
+            }'
+        ></xtal-element>
+    </mood-stone>
+    <div id=target></div>
+    <script>
+        function runTest(){
+            input.checked = true;
+            input.dispatchEvent(new Event('input'));
+            setTimeout(() => {
+                if(div.textContent === 'true'){
+                    target.setAttribute('mark', 'good');
+                }
+            }, 500);
+            
+        }
+        setTimeout(() => {
+            runTest();
+        }, 2000);
+    </script>
+</body>
+</html>
