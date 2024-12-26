@@ -170,7 +170,7 @@ If we want the (server-rendered) initial value of the input element to get passe
     #shadow
         <soul-searcher></soul-searcher>
         ...
-        <input 🛗='to ~soulSearcher:secondThoughts on change.'>
+        <input 🛗='to ~soulSearcher?.secondThoughts.'>
 </mood-stone>
 ```
 
