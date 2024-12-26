@@ -152,7 +152,7 @@ If we want the (server-rendered) initial value of the input element to get passe
 
 "srv" stands for "server-rendered-value" (and also works with server-generated values).
 
-## Example 2c [TODO]
+## Example 2c
 
 ```html
 <mood-stone>
