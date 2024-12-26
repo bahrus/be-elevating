@@ -74,7 +74,7 @@ That is the canonical name.  The developer can, in less formal settings, especia
 
 This passes the "value" property of the button to "songLyricOfTheDay" property of mood-stone.
 
-## Example 1e - specifying local property to pass with nested path, and target property [TODO]
+## Example 1e - specifying local property to pass with nested path, and target property
 
 ```html
 <mood-stone>
