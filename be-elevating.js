@@ -24,10 +24,12 @@ class BeElevating extends BE {
             ...propInfo,
             bindings: {},
             bindingRules: {},
+            rawStatements: {},
         },
         compacts:{
             when_bindingRules_changes_invoke_getBindings: 0,
             when_bindings_changes_invoke_hydrate: 0,
+            when_rawStatements_changes_invoke_onRawStatements: 0,
         },
         actions: {
             noAttrs: {
@@ -131,6 +133,15 @@ class BeElevating extends BE {
         return /** type {PAP} */ ({
             bindings
         });
+    }
+
+    /**
+     * 
+     * @param {BAP} self 
+     */
+    onRawStatements(self){
+        const { rawStatements } = self;
+        console.error('The following statements could not be parsed.', rawStatements);
     }
 }
 
